@@ -1,0 +1,76 @@
+h1{
+    text-align: center;
+   font-size: 50px;
+}
+
+.letras{
+    font-size: 30px;
+    margin-left: 30vw;
+    
+}
+.input{
+    margin-left: 2vw;
+    height: 30px;
+    width: 500px;
+    display: inline;
+}
+
+ .button{
+    margin-left: 45vw; 
+    margin-top: 20vh;
+    background: #0A2464;
+    border-radius: 20px;
+    color: white;
+    width: 15vw;
+    height: 8vh;
+    font-size: 20px;
+ }
+ .lupa{
+    width: 35px;
+    height: 35px; 
+    margin-left: 73vw;
+    margin-top: -30vh;
+ }
+ .buscador{
+    margin-left: 30vw;
+    width: 40vw;
+    height: 5vh;
+ }
+
+ .card {
+   border: 2px solid #0A2464;
+   border-radius: 8px;
+   padding: 16px;
+   width: 16vw;
+   text-align: center;
+   background-color: rgb(227, 248, 252);
+}
+
+.card-title {
+   font-size: 24px;
+   margin-bottom: 8px;
+}
+
+.card-image {
+   height: auto;
+}
+
+.card-description {
+   font-size: 16px;
+   margin-top: 8px;
+}
+.card-buttons {
+   margin-top: 16px;
+   display: flex;
+   justify-content: space-between;
+}
+
+.card-button {
+   background-color: #0A2464;
+   color: white;
+   border: none;
+   padding: 8px 16px;
+   border-radius: 4px;
+  
+}
+  

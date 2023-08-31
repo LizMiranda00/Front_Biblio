@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Prestamo from './Interfaces/Prestamo';
+import Principal from './Interfaces/Principal';
+import Admi from './Interfaces/Admi';
+import Empleado from './Interfaces/Empleado'
+import Categorias from './Interfaces/Categorias';
+import Reglib from './Interfaces/Reglib';
+import Regper from './Interfaces/Regper';
+import Regautor from './Interfaces/Regautor';
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    
+      <BrowserRouter>
+      <Routes>
+         {/* <Route path='/ruta del navegador' element={el archivo .js o interfas que quiero utilizar}></Route> */}
+        <Route path='/' element={<Principal/>}></Route>
+        <Route path='/Presta' element={<Prestamo/>}></Route>
+        <Route path='/Adm' element={<Admi/>}></Route>
+        <Route path='/Emp' element={<Empleado/>}></Route>
+        <Route path='/Cat' element={<Categorias/>}></Route>
+        <Route path='/Regli' element={<Reglib/>}></Route>
+        <Route path='/Regpe' element={<Regper/>}></Route>
+        <Route path='/Regau' element={<Regautor/>}></Route>
+        
+        
+
+      </Routes>
+      </BrowserRouter>
+
+   
+  )
 }
 
-export default App;
+export default App
