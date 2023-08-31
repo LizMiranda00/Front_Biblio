@@ -5,8 +5,13 @@ import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import Inputnum from '../../Componentes/Inputnum';
 import Inputtexto from '../../Componentes/Inputtexto';
+import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
+  const navigate=useNavigate();
+  const RegistrarAutor=()=>{
+    navigate('/Autor/Delete')
+  }
     const iconos=[{src:home,alt:'home'},{src:categ,alt:'categorias'}] 
 
   return (
@@ -15,7 +20,7 @@ const Create = () => {
      <h1>Registro de autor</h1>
      <Inputnum carnet='Ci:'/>
     <Inputtexto letra='Nombre:'/> 
-     <button className='button'>Registrar Autor</button>
+     <button className='button' onClick={RegistrarAutor}>Registrar Autor</button>
     </div>
   )
 }

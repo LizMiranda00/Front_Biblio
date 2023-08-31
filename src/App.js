@@ -9,6 +9,7 @@ import Reglib from './Interfaces/Reglib';
 import Regper from './Interfaces/Regper';
 import AutorCreate from './Interfaces/Autor/Create';
 import AutorEdit from './Interfaces/Autor/Edit';
+import AutorDelete from './Interfaces/Autor/Delete'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path='/Regpe' element={<Regper/>}></Route>
         <Route path='/Autor/Create' element={<AutorCreate/>}></Route>
         <Route path='/Autor/Edit' element={<AutorEdit/>}></Route>
+        <Route path='/Autor/Delete' element={<AutorDelete/>}></Route>
 
         
         

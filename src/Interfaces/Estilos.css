@@ -38,10 +38,11 @@ h1{
  }
 
  .card {
+   
    border: 2px solid #0A2464;
    border-radius: 8px;
    padding: 16px;
-   width: 16vw;
+   width: 18vw;
    text-align: center;
    background-color: rgb(227, 248, 252);
 }
