@@ -7,7 +7,9 @@ import Empleado from './Interfaces/Empleado'
 import Categorias from './Interfaces/Categorias';
 import Reglib from './Interfaces/Reglib';
 import Regper from './Interfaces/Regper';
-import Regautor from './Interfaces/Regautor';
+import AutorCreate from './Interfaces/Autor/Create';
+import AutorEdit from './Interfaces/Autor/Edit';
+
 const App = () => {
   return (
     
@@ -21,7 +23,9 @@ const App = () => {
         <Route path='/Cat' element={<Categorias/>}></Route>
         <Route path='/Regli' element={<Reglib/>}></Route>
         <Route path='/Regpe' element={<Regper/>}></Route>
-        <Route path='/Regau' element={<Regautor/>}></Route>
+        <Route path='/Autor/Create' element={<AutorCreate/>}></Route>
+        <Route path='/Autor/Edit' element={<AutorEdit/>}></Route>
+
         
         
 
