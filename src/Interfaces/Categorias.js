@@ -12,22 +12,21 @@ const Categorias = () => {
     <div>
         <Navegador iconos={iconos}/>
         
-        <h1>Libros</h1>
+        <h1>Categorias</h1>
         <input className='buscador' type='search' placeholder='Ingrese la categoria o autor del libro que desea' />
          <div>
             <img className='lupa' src={lupa} alt="lupa"/>
          </div>
         
-            <div class="card">
-                 <h2 class="card-title">Título de la Tarjeta</h2>
-                 <img className='card-image' src={share} alt="fuerza de shesid"/>
-                 <p class="card-description">Descripción de la tarjeta.</p>
+          <div class="card">
+                <h2 class="card-title">Título de la Tarjeta</h2>
+                <img className='card-image' src={share} alt="fuerza de shesid"/>
+                <p class="card-description">Descripción de la tarjeta.</p>
                  <div class="card-buttons">
             <button class="card-button">Editar</button>
             <button class="card-button">Eliminar</button>
-            <button class="card-button">Prestar</button>
+          </div>
         </div>
-            </div>
         
 
     </div>
