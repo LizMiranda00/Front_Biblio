@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import Navegador from '../../Componentes/Navegador';
 import home from '../../img/home.png';
 import categ from '../../img/1164620.png';
@@ -11,28 +11,71 @@ import axios from 'axios';
 const Create = () => {
   /*crear autor*/
   const navigate=useNavigate();
+  const backtolist=()=>{
+    navigate('/Categoria/Show')
+  }
+  /*para obtener la lista de categorias en el card de la bd*/ 
+  const [listcategoria,setlistcategoria]=useState([])
+  const getData=async()=>{let response=await axios.get('http://192.168.100.120/app/bliblioteca/public/api/categorias') 
+  setlistcategoria(response.data)
+ }
+ /**el get data esta obteniendo categorias y van sumando cada que se crea */
+  useEffect(()=>{getData()},[])
+  
+   const iconos=[{src:home,alt:'home'},{src:categ,alt:'categorias'}] 
+   
+
   const RegistrarCategoria=async()=>{
-    await axios.post('http://192.168.1.7/app/bliblioteca/public/api/categoria',data) //con esto mando
+    await axios.post('http://192.168.100.120/app/bliblioteca/public/api/categoria',data) //con esto mando
     navigate('/Categoria/Show')
     //console.log(data);
   }
-  const [data,setdata]=useState({nombre:''})
-    const iconos=[{src:home,alt:'home'},{src:categ,alt:'categorias'}] 
-  return (
+  const [data,setdata]=useState({ci:0,nombre:''})
+  
+    return (
+
     <div>
      <Navegador iconos={iconos}/>
-     <div class='container'>
-      <div class="card w-100 m-1" >
-        <div class="card-body">
-          <h5 className="card-title">Registro de Categoría</h5>
-            <div className="mb-3">
-              <label htmlFor="nombre" className="form-label">Nombre:</label>
-              <input type="text" className="form-control" id="nombre" name='nombre' data={data} setData={setdata}/>
+     <div class="container ">
+        <h1>Categoria</h1>
+        <div class='row justify-content-center' className='Buscador'>
+          <div class='cl-12 '>
+          <input className='buscador' type='search' placeholder='Ingrese la categoria o autor del libro que desea' />
+          </div>    
+        </div>
+        <div class='row justify-content-center'>
+        <div class="col-12">
+          <div class="card w-50" >
+            <div class="card-body">
+              <h5 className="card-title">Registro de Categoria</h5>
+
+              <Inputnum tInput='ID::' name='id'/*aqui pongo con nombre me esta recibienco en name*/data={data} setData={setdata}/>
+              <Inputtexto tInput='Nombre:'name='nombre' data={data} setData={setdata}/> 
+              
+              <button className="btn btn-primary" onClick={RegistrarCategoria}>Registrar categoria</button>
             </div>
-            <button className="btn btn-primary" onClick={RegistrarCategoria}>Registrar Categoría</button>
+          </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class="col-12">
+            <div className='cardlist'>{listcategoria.map((categoria)=>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title text-center align-items-center">{categoria.nombre}</h5>
+                  <p class="card-text">Id:  <strong>{categoria.id}</strong></p>
+                  <p class="card-text">Nombre: <strong>{categoria.nombre}</strong></p>
+                      
+                  <div class="card-buttons">
+                    <button class="card-button btn btn-primary" >Editar</button>
+                    <button class="card-button btn btn-primary" onClick={backtolist} >Eliminar</button>
+                  </div>
+                </div> 
+              </div>)}
+            </div>
+          </div>
         </div>
       </div>
-     </div>
     </div>
   )
 }

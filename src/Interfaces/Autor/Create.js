@@ -12,7 +12,7 @@ const Create = () => {
   /*crear autor*/
   const navigate=useNavigate();
   const RegistrarAutor=async()=>{
-    await axios.post('http://192.168.1.7/app/bliblioteca/public/api/autor',data) //con esto mando
+    await axios.post('http://192.168.100.120/app/bliblioteca/public/api/autor',data) //con esto mando
     navigate('/Autor/Delete')
     //console.log(data);
   }
@@ -38,16 +38,3 @@ const Create = () => {
   )
 }
 export default Create
-/*
-<input
-    className='form-control'
-    name='nombre'
-    type='text'
-    onChange={(e) => setdata({ ...data, nombre: e.target.value })} // Cambiamos 'id' a 'nombre'
-    value={data.nombre || ''}
-    data={data}
-    setData={setdata}
-/>
-
-
-*/ 
