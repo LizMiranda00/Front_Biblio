@@ -7,8 +7,8 @@ const Inputtexto = (props) => {
 }
   return (
     <div>
-       <label className='letras' >{props.letra}</label>
-       <input className='input' type='text'name={props.name} onChange={onChange} 
+      <label className='form-label' >{props.tInput}</label>
+       <input className='form-control' type='text'name={props.name} onChange={onChange} 
        defaultValue={props.value? props.value: null}/> 
     </div>
   )

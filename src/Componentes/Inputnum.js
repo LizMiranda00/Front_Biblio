@@ -7,8 +7,8 @@ const Inputnum = (props) => {
 }
   return (
     <div>
-       <label className='letras' >{props.carnet}</label>
-       <input className='input' name={props.name} type='number' onChange={onChange} 
+       <label className='form-label' >{props.tInput}</label>
+       <input className='form-control' name={props.name} type='number' onChange={onChange} 
        defaultValue={props.value? props.value: null} /> 
     </div>
   )

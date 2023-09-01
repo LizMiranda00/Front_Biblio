@@ -11,6 +11,9 @@ import AutorCreate from './Interfaces/Autor/Create';
 import AutorEdit from './Interfaces/Autor/Edit';
 import AutorDelete from './Interfaces/Autor/Delete';
 import CategoriaShow from './Interfaces/Categoria/Show'
+import CategoriaCreate from './Interfaces/Categoria/Create'
+import CategoriaEdit from './Interfaces/Categoria/Edit'
+import CategoriaDelete from './Interfaces/Categoria/Delete'
 
 const App = () => {
   return (
@@ -28,8 +31,11 @@ const App = () => {
         <Route path='/Autor/Create' element={<AutorCreate/>}></Route>
         <Route path='/Autor/Edit' element={<AutorEdit/>}></Route>
         <Route path='/Autor/Delete' element={<AutorDelete/>}></Route>
+        <Route path='/Categoria/Create' element={<CategoriaCreate/>}></Route>
         <Route path='/Categoria/Show' element={<CategoriaShow/>}></Route>
-        
+        <Route path='/Categoria/Edit' element={<CategoriaEdit/>}></Route>
+        <Route path='/Categoria/Delete' element={<CategoriaEdit/>}></Route>
+
         
 
       </Routes>
