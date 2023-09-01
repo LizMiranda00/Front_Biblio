@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Create = () => {
+  /*crear autor*/
   const navigate=useNavigate();
   const RegistrarAutor=async()=>{
     await axios.post('http://192.168.100.5/Proyecto_biblio/bliblioteca/public/api/autor',data) //con esto mando
