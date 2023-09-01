@@ -9,6 +9,7 @@ import Reglib from './Interfaces/Reglib';
 import Regper from './Interfaces/Regper';
 import AutorCreate from './Interfaces/Autor/Create';
 import AutorEdit from './Interfaces/Autor/Edit';
+import CategoriaShow from './Interfaces/Categoria/Show';
 
 import ShowAutor from './Interfaces/Autor/Show';
 const App = () => {
@@ -27,7 +28,7 @@ const App = () => {
         <Route path='/Autor/Create' element={<AutorCreate/>}></Route>
         <Route path='/Autor/Edit' element={<AutorEdit/>}></Route>
         <Route path='/Autor/Show' element={<ShowAutor/>}></Route>
-        
+        <Route path='/Categoria/Show' element={<CategoriaShow/>}></Route>
         
 
       </Routes>
