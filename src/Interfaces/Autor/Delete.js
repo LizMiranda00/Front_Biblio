@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navegador from '../../Componentes/Navegador';
 import home from '../../img/home.png';
 import categ from '../../img/1164620.png';
@@ -11,7 +11,7 @@ const Delete = () => {
   const backtolist=()=>{
     navigate('/Autor/Edit')
   }
- 
+   
     const iconos=[{src:home,alt:'home'},{src:categ,alt:'categorias'}] 
   return (
     <div>
