@@ -59,19 +59,6 @@ const Show = () => {
     { id: 3, nombre: "Categoría 3" }
   ];
 
-  const itemsPerPage = 9; // Número de categorías por página
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const lastIndex = currentPage * itemsPerPage;
-  const firstIndex = lastIndex - itemsPerPage;
-  const currentCategorias = categorias.slice(firstIndex, lastIndex);
-
-  const totalPages = Math.ceil(categorias.length / itemsPerPage);
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
   return (
     <div class='container'>
       <div class='row gy-3'>
