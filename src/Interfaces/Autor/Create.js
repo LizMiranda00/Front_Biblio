@@ -12,8 +12,8 @@ const Create = () => {
   /*crear autor*/
   const navigate=useNavigate();
   const RegistrarAutor=async()=>{
-    await axios.post('http://192.168.100.120/app/bliblioteca/public/api/autor',data) //con esto mando
-    navigate('/Autor/Delete')
+    await axios.post('http://192.168.1.6/app/bliblioteca/public/api/autor',data) //con esto mando
+    navigate('/Autor/Show')
     //console.log(data);
   }
   const [data,setdata]=useState({ci:0,nombre:''})

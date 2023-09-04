@@ -2,16 +2,38 @@ import React, { useEffect, useState } from 'react'
 import Navegador from '../../Componentes/Navegador';
 import home from '../../img/home.png';
 import categ from '../../img/1164620.png';
+import Inputnum from '../../Componentes/Inputnum';
+import Inputtexto from '../../Componentes/Inputtexto';
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root'); // Esto es necesario para evitar problemas de accesibilidad
+
+
 
 
 const Show = () => {
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const [editingAutor, setEditingAutor] = useState(null); // Agrega un estado para controlar el autor que se está editando
+
+  const openModal = (autor) => {
+    setEditingAutor(autor); // Al hacer clic en "Editar", guarda el autor que se está editando
+    setModalIsOpen(true); // Abre el modal
+  };
+
+  const closeModal = () => {
+    setEditingAutor(null); // Borra el autor que se está editando al cerrar el modal
+    setModalIsOpen(false); // Cierra el modal
+  };
+
   const navigate=useNavigate();
-  const backtolist=()=>{
+ /**  const backtolist=()=>{
     navigate('/Autor')
-  }
+  }*/
   const toCreate=()=>{
     navigate('/Autor/Create')
   }
@@ -55,11 +77,30 @@ const Show = () => {
             <h5 class="card-title text-center align-items-center">{autor.nombre}</h5>
             <p class="card-text">Id:  <strong>{autor.id}</strong></p>
             <p class="card-text">Nombre: <strong>{autor.nombre}</strong></p>
-                
-            <div class="card-buttons">
-              <button class="card-button btn btn-primary" >Editar</button>
-              <button class="card-button btn btn-primary" onClick={backtolist} >Eliminar</button>
-            </div>
+            
+    <div class="card-buttons">
+
+      <div>
+      <button className='card-button btn btn-primary' onClick={() => openModal(autor)}>Editar</button>
+       {modalIsOpen && editingAutor === autor && (
+                      <Modal
+                        className='react-modal-content'
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        contentLabel='Editar autor'
+                      >
+                        <h1>Editar autor</h1>
+                        <label>Ci:</label>
+                        <Inputnum carnet='Ci:' />
+                        <label>Nombre:</label>
+                        <Inputtexto letra='Nombre:' />
+                        <button className='card-button btn btn-primary' onClick={closeModal}>Actualizar</button>
+                      </Modal>
+                    )}
+      </div>
+      
+      <button class="card-button btn btn-primary"  >Eliminar</button>
+    </div>
           </div>   
         </div>)}
       </div>
