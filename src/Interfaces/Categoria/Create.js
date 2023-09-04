@@ -16,7 +16,7 @@ const Create = () => {
   }
   /*para obtener la lista de categorias en el card de la bd*/ 
   const [listcategoria,setlistcategoria]=useState([])
-  const getData=async()=>{let response=await axios.get('http://192.168.100.120/app/bliblioteca/public/api/categorias') 
+  const getData=async()=>{let response=await axios.get('http://192.168.1.6/app/bliblioteca/public/api/categorias') 
   setlistcategoria(response.data)
  }
  /**el get data esta obteniendo categorias y van sumando cada que se crea */
@@ -26,7 +26,7 @@ const Create = () => {
    
 
   const RegistrarCategoria=async()=>{
-    await axios.post('http://192.168.100.120/app/bliblioteca/public/api/categoria',data) //con esto mando
+    await axios.post('http://192.168.1.6/app/bliblioteca/public/api/categoria',data) //con esto mando
     navigate('/Categoria/Show')
     //console.log(data);
   }
@@ -49,7 +49,6 @@ const Create = () => {
             <div class="card-body">
               <h5 className="card-title">Registro de Categoria</h5>
 
-              <Inputnum tInput='ID::' name='id'/*aqui pongo con nombre me esta recibienco en name*/data={data} setData={setdata}/>
               <Inputtexto tInput='Nombre:'name='nombre' data={data} setData={setdata}/> 
               
               <button className="btn btn-primary" onClick={RegistrarCategoria}>Registrar categoria</button>
