@@ -1,22 +1,28 @@
-import home from '../img/home.png';
-import categ from '../img/1164620.png';
-import usu from '../img/1769041.png';
-import logo from '../img/logo.PNG';
-import '../App.css';
-import { Link } from 'react-router-dom';
+import home from "../img/home.png";
+import categ from "../img/1164620.png";
+import usu from "../img/1769041.png";
+import logo from "../img/logo.PNG";
+import "../App.css";
+import { Link } from "react-router-dom";
 
 function Principal() {
   return (
     <div className="App">
       <nav class="nav">
-        <img src={home} alt="home"/>
-        <Link to={"/Cat"}><img  src={categ} alt="categoria"/></Link>
-        
-        <img src={usu} alt="usuario"/>
-    </nav>
-    <main class="logo">
-        <img className='log' src={logo} alt="logo"/>
-    </main>
+        <div >
+          <img src={home} alt="home" />
+          <Link to={"/Cat"}>
+            <img src={categ} alt="categoria" />
+          </Link>
+
+          <img src={usu} alt="usuario" />
+        </div>
+
+        <Link to={"/login"} className="button-login">login</Link>
+      </nav>
+      <main class="logo">
+        <img className="log" src={logo} alt="logo" />
+      </main>
     </div>
   );
 }
