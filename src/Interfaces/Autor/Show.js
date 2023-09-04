@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Navegador from '../../Componentes/Navegador';
 import home from '../../img/home.png';
 import categ from '../../img/1164620.png';
-import Inputnum from '../../Componentes/Inputnum';
-import Inputtexto from '../../Componentes/Inputtexto';
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -11,22 +9,21 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root'); // Esto es necesario para evitar problemas de accesibilidad
 
-
-
-
 const Show = () => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const [editingAutor, setEditingAutor] = useState(null); // Agrega un estado para controlar el autor que se está editando
+  const [editingAutor, setEditingAutor] = useState(null); // Estado para el autor que se está editando
+  const [newAuthorName, setNewAuthorName] = useState(''); // Estado para el nuevo nombre del autor
 
   const openModal = (autor) => {
     setEditingAutor(autor); // Al hacer clic en "Editar", guarda el autor que se está editando
+    setNewAuthorName(autor.nombre); // Establece el nombre actual como valor inicial en el input
     setModalIsOpen(true); // Abre el modal
   };
 
   const closeModal = () => {
     setEditingAutor(null); // Borra el autor que se está editando al cerrar el modal
+    setNewAuthorName(''); // Restablece el estado del nombre
     setModalIsOpen(false); // Cierra el modal
   };
 
@@ -45,6 +42,25 @@ const Show = () => {
  /**el get data esta obteniendo autores y van sumando cada que se crea */
   useEffect(()=>{getData()},[])
   
+  const updateAuthor = async () => {
+    try {
+      // Realiza una solicitud PUT al servidor para actualizar el nombre del autor
+      await axios.put(`http://192.168.1.6/app/bliblioteca/public/api/autores/${editingAutor.id}`, {
+        nombre: newAuthorName,
+      });
+
+      // Actualiza el nombre del autor en la lista local
+      const updatedAuthors = listautor.map((autor) =>
+        autor.id === editingAutor.id ? { ...autor, nombre: newAuthorName } : autor
+      );
+      setlistautor(updatedAuthors);
+
+      closeModal(); // Cierra el modal después de una actualización exitosa
+    } catch (error) {
+      console.error("Error al actualizar el autor:", error);
+      // Maneja errores aquí, muestra un mensaje de error o toma otras medidas necesarias
+    }
+  };
 
   const searcher = (e) => {
     setSearch(e.target.value.toLowerCase()); // Convierte la entrada del usuario a minúsculas
@@ -89,12 +105,18 @@ const Show = () => {
                         onRequestClose={closeModal}
                         contentLabel='Editar autor'
                       >
-                        <h1>Editar autor</h1>
+                         <h1>Editar autor</h1>
                         <label>Ci:</label>
-                        <Inputnum carnet='Ci:' />
+                        <input type='number' value={autor.ci} readOnly />
                         <label>Nombre:</label>
-                        <Inputtexto letra='Nombre:' />
-                        <button className='card-button btn btn-primary' onClick={closeModal}>Actualizar</button>
+                        <input
+                          type='text'
+                          value={newAuthorName}
+                          onChange={(e) => setNewAuthorName(e.target.value)}
+                        />
+                        <button className='card-button btn btn-primary' onClick={updateAuthor}>
+                          Actualizar
+                        </button>
                       </Modal>
                     )}
       </div>
