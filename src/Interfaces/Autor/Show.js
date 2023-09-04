@@ -43,7 +43,6 @@ const Show = () => {
       <div class='row'>
           <div class='col-9'>
           <input value={search} onChange={searcher} className='buscador' type='text' placeholder='Introduzca nombre del autor' />
-            <input className='buscador' type='search' placeholder='Ingrese la categoria o autor del libro que desea' />
           </div>
           <div class='col-3'>
             <button class="card-button btn btn-primary" onClick={toCreate} >Crear Autor</button> 
