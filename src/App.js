@@ -4,16 +4,15 @@ import Prestamo from './Interfaces/Prestamo';
 import Principal from './Interfaces/Principal';
 import Admi from './Interfaces/Admi';
 import Empleado from './Interfaces/Empleado'
-
 import Reglib from './Interfaces/Reglib';
 import Regper from './Interfaces/Regper';
 import AutorShow from './Interfaces/Autor/Show';
 import AutorCreate from './Interfaces/Autor/Create';
-
 import AutorDelete from './Interfaces/Autor/Delete';
-import CategoriaShow from './Interfaces/Categoria/Show'
-import CategoriaCreate from './Interfaces/Categoria/Create'
-
+import CategoriaShow from './Interfaces/Categoria/Show';
+import CategoriaCreate from './Interfaces/Categoria/Create';
+import ClienteCreate from './Interfaces/Cliente/Create';
+import ClienteShow from './Interfaces/Cliente/Show';
 
 const App = () => {
   return (
@@ -33,11 +32,9 @@ const App = () => {
         <Route path='/Autor/Delete' element={<AutorDelete/>}></Route>
         <Route path='/Categoria/Create' element={<CategoriaCreate/>}></Route>
         <Route path='/Categoria/Show' element={<CategoriaShow/>}></Route>
-        
-        
-
-        
-
+        <Route path='/Cliente/Create' element={<ClienteCreate/>}></Route>
+        <Route path='/Cliente/Show' element={<ClienteShow/>}></Route>
+      
       </Routes>
       </BrowserRouter>
 

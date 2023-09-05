@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState} from 'react'
 import Navegador from '../../Componentes/Navegador';
 import home from '../../img/home.png';
 import categ from '../../img/1164620.png';
