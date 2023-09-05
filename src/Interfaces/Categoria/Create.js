@@ -47,11 +47,8 @@ const Create = () => {
         <div class="col-12">
           <div class="card w-50" >
             <div class="card-body">
-              <h5 className="card-title">Registro de Categoria</h5>
-
+              <h5 className="card-title">Registro de Libro</h5>
               <Inputtexto tInput='Nombre:'name='nombre' data={data} setData={setdata}/> 
-              
-              <button className="btn btn-primary" onClick={RegistrarCategoria}>Registrar categoria</button>
             </div>
           </div>
           </div>
