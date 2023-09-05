@@ -10,14 +10,16 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root'); // Esto es necesario para evitar problemas de accesibilidad
 
 const Show = () => {
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [editingAutor, setEditingAutor] = useState(null); // Estado para el autor que se está editando
   const [newAuthorName, setNewAuthorName] = useState(''); // Estado para el nuevo nombre del autor
+  const [newAuthorCI, setNewAuthorCI] = useState(''); // Estado para el nuevo carnet del autor
 
+ 
   const openModal = (autor) => {
     setEditingAutor(autor); // Al hacer clic en "Editar", guarda el autor que se está editando
     setNewAuthorName(autor.nombre); // Establece el nombre actual como valor inicial en el input
+    setNewAuthorCI(autor.id); // Establece el carnet actual como valor inicial en el input
     setModalIsOpen(true); // Abre el modal
   };
 
@@ -25,18 +27,17 @@ const Show = () => {
     setEditingAutor(null); // Borra el autor que se está editando al cerrar el modal
     setNewAuthorName(''); // Restablece el estado del nombre
     setModalIsOpen(false); // Cierra el modal
+     // Recarga la página después de cerrar el modal
+  window.location.reload();
   };
 
   const navigate=useNavigate();
- /**  const backtolist=()=>{
-    navigate('/Autor')
-  }*/
   const toCreate=()=>{
     navigate('/Autor/Create')
   }
   /*para obtener la lista de autores en el card de la bd*/ 
   const [listautor,setlistautor]=useState([])
-  const getData=async()=>{let response=await axios.get('http://192.168.1.6/app/bliblioteca/public/api/autores') 
+  const getData=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/autores') 
   setlistautor(response.data)
  }
  /**el get data esta obteniendo autores y van sumando cada que se crea */
@@ -45,7 +46,7 @@ const Show = () => {
   const updateAuthor = async () => {
     try {
       // Realiza una solicitud PUT al servidor para actualizar el nombre del autor
-      await axios.put(`http://192.168.1.6/app/bliblioteca/public/api/autores/${editingAutor.id}`, {
+      await axios.put(`http://192.168.1.2/app/bliblioteca/public/api/autor/${editingAutor.id}`, {
         nombre: newAuthorName,
       });
 
@@ -55,7 +56,8 @@ const Show = () => {
       );
       setlistautor(updatedAuthors);
 
-      closeModal(); // Cierra el modal después de una actualización exitosa
+      closeModal(); 
+      // Cierra el modal después de una actualización exitosa
     } catch (error) {
       console.error("Error al actualizar el autor:", error);
       // Maneja errores aquí, muestra un mensaje de error o toma otras medidas necesarias
@@ -107,13 +109,13 @@ const Show = () => {
                       >
                          <h1>Editar autor</h1>
                         <label>Ci:</label>
-                        <input type='number' value={autor.ci} readOnly />
+                        <input type='number' value={newAuthorCI} readOnly />
                         <label>Nombre:</label>
                         <input
-                          type='text'
-                          value={newAuthorName}
-                          onChange={(e) => setNewAuthorName(e.target.value)}
-                        />
+                        type='text'
+                        value={newAuthorName}
+                        onChange={(e) => setNewAuthorName(e.target.value)}
+                      />
                         <button className='card-button btn btn-primary' onClick={updateAuthor}>
                           Actualizar
                         </button>
