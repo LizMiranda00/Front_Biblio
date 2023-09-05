@@ -18,7 +18,7 @@ function Login({setUser}) {
 
     try {
             const response = await axios.post(
-        "http://192.168.1.6/app/bliblioteca/public/api/login",
+        "http://192.168.1.2/app/bliblioteca/public/api/login",
         {
           email: email,
           password: password,
@@ -38,31 +38,42 @@ function Login({setUser}) {
     }
   };
   return (
-    <div>
-      <h1>Login</h1>
-      <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="" >
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </label>
-        <label htmlFor="">
-          Contraseña:
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={e => setPasword(e.target.value)}
-          />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-      {error && <p>Todos los campos son obligatorios</p>}
-    </div>
+    <div class="container d-flex justify-content-center align-items-center w-100" style='background-image: url("../");'>
+      <div class="row" >
+              <div class="card">
+                  <h1>Login</h1>
+                  <div class="card-body">
+                    <form action="" onSubmit={handleSubmit}>
+                      <div class="row">
+                        <p class="card-text"><strong>E-mail</strong></p>
+                        <input
+                            class="form-group"
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                          />
+                      </div>
+                      <div class="row">
+                        <p class="card-text"><strong>Contraseña:</strong></p>
+                        <input
+                          class="form-group"
+                          type="password"
+                          name="password"
+                          value={password}
+                          onChange={e => setPasword(e.target.value)}
+                        />
+                      </div>
+                      
+                        <div class="row mt-3">
+                          	<button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                    {error && <p>Todos los campos son obligatorios</p>}
+                  </div>
+              </div>
+      </div>
+   </div>
   );
 }
 

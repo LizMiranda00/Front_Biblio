@@ -16,7 +16,7 @@ const Create = () => {
   }
   /*para obtener la lista de libros en el card de la bd*/ 
   const [listlibro,setlistlibro]=useState([])
-  const getData=async()=>{let response=await axios.get('http://192.168.100.254/app/bliblioteca/public/api/libros') 
+  const getData=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/libros') 
   setlistlibro(response.data)
  }
  /**el get data esta obteniendo libros y van sumando cada que se crea */
@@ -24,7 +24,7 @@ const Create = () => {
  
   /* obtener la lista de categorias en el card de la bd*/ 
   const [listcategoria,setlistcategoria]=useState([])
-  const getDataCat=async()=>{let response=await axios.get('http://192.168.100.254/app/bliblioteca/public/api/categorias') 
+  const getDataCat=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/categorias') 
   setlistcategoria(response.data)
  }
  /**el get data esta obteniendo categorias y van sumando cada que se crea */
@@ -32,7 +32,7 @@ const Create = () => {
 
   /* obtener la lista de personal para el select de la bd*/ 
   const [listpersonal, setlistpersonal]=useState([])
-  const getDataPer=async()=>{let response=await axios.get('http://192.168.100.254/app/bliblioteca/public/api/personals')
+  const getDataPer=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/personals')
   setlistpersonal(response.data)
 }
 /**el get data esta obteniendo personal para el select de la BD*/
@@ -41,11 +41,15 @@ useEffect(()=>{getDataPer()},[])
 
   /*para obtener la lista de autores en el card de la bd*/ 
 const [listautor,setlistautor]=useState([])
-const getDataAut=async()=>{let response=await axios.get('http://192.168.100.254/app/bliblioteca/public/api/autores') 
+const getDataAut=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/autores') 
 setlistautor(response.data)
 }
 /**el get data esta obteniendo autores y van sumando cada que se crea */
 useEffect(()=>{getDataAut()},[])
+
+/** */
+
+
   /*
   const searcher = (e) => {
     setSearch(e.target.value.toLowerCase()); // Convierte la entrada del usuario a minúsculas
@@ -59,15 +63,22 @@ useEffect(()=>{getDataAut()},[])
    
 
   const Registrarlibro=async()=>{
-    await axios.post('http://192.168.100.254/app/bliblioteca/public/api/libro',data) //con esto mando
+    await axios.post('http://192.168.1.2/app/bliblioteca/public/api/libro',data) //con esto mando
     navigate('/Libros')
     //console.log(data);
   }
   
   const options = listautor.map((autor, id) => ({
-    value: autor.nombre,
+    value: autor.id,
     label: autor.nombre,
   }));
+
+  const optionsCat = listcategoria.map((categoria) => ({
+    value: categoria.id,
+    label: categoria.nombre,
+    busc: categoria.id,
+  }));
+
   return(
 
   
@@ -88,21 +99,35 @@ useEffect(()=>{getDataAut()},[])
 
               <Inputtexto tInput='Nombre:'name='nombre' data={data} setData={setdata}/> 
               <Inputtexto tInput='Edicion:'name='nombre' data={data} setData={setdata}/> 
-              <Inputtexto tInput='Estado:'name='nombre' data={data} setData={setdata}/>           
+              <Inputtexto tInput='Estado:'name='nombre' data={data} setData={setdata} />
+                      
               <input type='file' name='imagen' data={data} setData={setdata}/>  
-              <input type='text' id='categoria' name='categoria' value={listcategoria.name} list='categorias' data={data} setData={setdata}/>
-              <datalist id='categorias'>
-                    {listcategoria.map((categoria,id)=>(
-                        <option key={id} value={categoria.nombre}/>
-                    ))}
-              </datalist>
-              <datalist id='Personal'>
+              <div class='row'>
+              <label className='form-label' >Categoria</label>{/** <input type='text' id='categoria' name='categoria' value={listcategoria.name} list='categorias' data={data} setData={setdata} onChange={(e) => {
+    console.log('Valor del input:', e.target.dato, e.target.value);}}/>*/}
+                
+                <input type="text" list="Personal" name="nombre" />
+                {/* Campo oculto para almacenar la ID que se enviará al backend */}
+                <input type="hidden" name="id" value="" onChange={(e) => {
+    console.log('Valor del input:', e.target.dato, e.target.value);}}/>
+                <datalist id='categorias' >
+                  {optionsCat.map((option)=>(
+                    <option key={option.value} value={option.value}>{option.label}</option>
+                  ))}
+                </datalist>
+              </div>
+              <div class='row'>
+                  <label className='form-label' >Personal</label>
+                  <input type='text' id='personal' name='personal' value={listpersonal.name} list='Personal' data={data} setData={setdata} onChange={(e) => {
+    console.log('Valor del input:', e.target.key, e.target.value);}}/>
+                  <datalist id='Personal'>
                     {listpersonal.map((personal,id)=>(
-                        <option key={id} value={personal.nombre}/>
-                    ))}
+                        <option key={personal.id} value={personal.nombre} data-id={personal.id}/>
+                  ))}
               </datalist>
-              <label data={data} setData={setdata}>personal Id</label>
-            <input />
+              </div>
+              <label data={data} setData={setdata}></label>
+              <label className='form-label' >Autor/es</label>
             <Select isMulti options={options} />
             
             <button className="btn btn-primary" onClick={Registrarlibro}>Registrar categoria</button>

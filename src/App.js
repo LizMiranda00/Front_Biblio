@@ -16,6 +16,7 @@ import CategoriaCreate from './Interfaces/Categoria/Create'
 import CategoriaEdit from './Interfaces/Categoria/Edit'
 import LibroShow from './Interfaces/Libro/Show'
 import LibroCreate from './Interfaces/Libro/Create'
+import Login from './Login'
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
         <Route path='/Categoria/Edit' element={<CategoriaEdit/>}></Route>
         <Route path='/Libros' element={<LibroShow/>}></Route>
         <Route path='/Libros/Create' element={<LibroCreate/>}></Route>
+        <Route path='/Login' element={<Login/>}></Route>
         
 
       </Routes>
