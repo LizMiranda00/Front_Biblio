@@ -4,8 +4,9 @@ import home from '../../img/home.png';
 import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
+import axios from 'axios';
+import {ipAddress} from "../../Componentes/confip";
 
 const Show = () => {
   const navigate=useNavigate();
@@ -17,7 +18,7 @@ const Show = () => {
   }
   /*para obtener la lista de categorias en el card de la bd*/ 
    const [listcategoria,setlistcategoria]=useState([])
-   const getData=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/categorias') 
+   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/categorias`) 
    setlistcategoria(response.data)
   }
   /**el get data esta obteniendo categorias y van sumando cada que se crea */

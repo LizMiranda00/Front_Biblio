@@ -11,7 +11,13 @@ function Principal() {
       <nav class="nav">
         <div >
           <img src={home} alt="home" />
-          <Link to={"/Cat"}>
+          <Link to={"/Autor"}>
+            <label>Autor</label>
+          </Link>
+          <Link to={"/Categoria"}>
+            <label>Categoria</label>
+          </Link>
+          <Link to={"/Libro"}>
             <img src={categ} alt="categoria" />
           </Link>
 

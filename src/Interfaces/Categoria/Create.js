@@ -6,17 +6,19 @@ import '../Estilos.css'
 import Inputnum from '../../Componentes/Inputnum';
 import Inputtexto from '../../Componentes/Inputtexto';
 import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
+import { ipAddress } from "../../Componentes/confip";
 
 const Create = () => {
   /*crear autor*/
   const navigate=useNavigate();
   const backtolist=()=>{
-    navigate('/Categoria/Show')
+    navigate('/Categoria')
   }
   /*para obtener la lista de categorias en el card de la bd*/ 
   const [listcategoria,setlistcategoria]=useState([])
-  const getData=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/categorias') 
+  const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/categorias`) 
   setlistcategoria(response.data)
  }
  /**el get data esta obteniendo categorias y van sumando cada que se crea */
@@ -26,8 +28,8 @@ const Create = () => {
    
 
   const RegistrarCategoria=async()=>{
-    await axios.post('http://192.168.1.2/app/bliblioteca/public/api/categoria',data) //con esto mando
-    navigate('/Categoria/Show')
+    await axios.post(`http://${ipAddress}/app/bliblioteca/public/api/categoria`,data) //con esto mando
+    navigate('/Categoria')
     //console.log(data);
   }
   const [data,setdata]=useState({ci:0,nombre:''})
@@ -47,7 +49,7 @@ const Create = () => {
         <div class="col-12">
           <div class="card w-50" >
             <div class="card-body">
-              <h5 className="card-title">Registro de Libro</h5>
+              <h5 className="card-title">Registro de Categoria</h5>
               <Inputtexto tInput='Nombre:'name='nombre' data={data} setData={setdata}/> 
             </div>
           </div>

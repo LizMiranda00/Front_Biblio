@@ -7,13 +7,14 @@ import Inputnum from '../../Componentes/Inputnum';
 import Inputtexto from '../../Componentes/Inputtexto';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ipAddress } from "../../Componentes/confip";
 
 const Create = () => {
   /*crear autor*/
   const navigate=useNavigate();
   const RegistrarAutor=async()=>{
-    await axios.post('http://192.168.100.120/app/bliblioteca/public/api/autor',data) //con esto mando
-    navigate('/Autor/Delete')
+    await axios.post(`http://${ipAddress}/app/bliblioteca/public/api/autor`,data) //con esto mando
+    navigate('/Autor')
     //console.log(data);
   }
   const [data,setdata]=useState({ci:0,nombre:''})

@@ -31,15 +31,17 @@ const App = () => {
         <Route path='/Cat' element={<Categorias/>}></Route>
         <Route path='/Regli' element={<Reglib/>}></Route>
         <Route path='/Regpe' element={<Regper/>}></Route>
-        <Route path='/Autor/Show' element={<AutorShow/>}></Route>
+
+        <Route path='/Autor' element={<AutorShow/>}></Route>
         <Route path='/Autor/Create' element={<AutorCreate/>}></Route>
         <Route path='/Autor/Edit' element={<AutorEdit/>}></Route>
         <Route path='/Autor/Delete' element={<AutorDelete/>}></Route>
+
+        <Route path='/Categoria' element={<CategoriaShow/>}></Route>
         <Route path='/Categoria/Create' element={<CategoriaCreate/>}></Route>
-        <Route path='/Categoria/Show' element={<CategoriaShow/>}></Route>
         <Route path='/Categoria/Edit' element={<CategoriaEdit/>}></Route>
-        <Route path='/Libros' element={<LibroShow/>}></Route>
-        <Route path='/Libros/Create' element={<LibroCreate/>}></Route>
+        <Route path='/Libro' element={<LibroShow/>}></Route>
+        <Route path='/Libro/Create' element={<LibroCreate/>}></Route>
         <Route path='/Login' element={<Login/>}></Route>
         
 

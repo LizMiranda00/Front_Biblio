@@ -99,19 +99,20 @@ useEffect(()=>{getDataAut()},[])
 
               <Inputtexto tInput='Nombre:'name='nombre' data={data} setData={setdata}/> 
               <Inputtexto tInput='Edicion:'name='nombre' data={data} setData={setdata}/> 
-              <Inputtexto tInput='Estado:'name='nombre' data={data} setData={setdata} />
+              <Inputtexto tInput='Estado:'name='nombre' data={data} setData={setdata}  onChange={(e) => {
+    console.log('Valor de data:', data);
+    console.log('Valor de setdata:', setdata);}}/>
                       
-              <input type='file' name='imagen' data={data} setData={setdata}/>  
+              <input type='file' name='imagen' data={data} setData={setdata} />  
               <div class='row'>
               <label className='form-label' >Categoria</label>
-              <input type='text' id='categoria' name='categoria' value={listcategoria.name} list='categorias' data={data} setData={setdata} onChange={(e) => {
-    console.log('Valor del input:', e.target.dato, e.target.value);}}/>
-              
-                <datalist id='categorias' >
-                  {optionsCat.map((option)=>(
-                    <option key={option.value} value={[option.value, option.label]}/>
-                  ))}
-                </datalist>
+              <input type='text' id='categoria' name='personal' value={listcategoria.id} list='Categoria' data={data} setData={setdata} onChange={(e) => {
+    console.log('Valor del input:',data[0], e.target.value[0]);}}/>
+                  <datalist id='Categoria'>
+                    {listcategoria.map((categoria,id)=>(
+                        <option key={categoria.id} value={[categoria.id,categoria.nombre]}/>
+                    ))}
+              </datalist>
               </div>
               <div class='row'>
                   <label className='form-label' >Personal</label>
