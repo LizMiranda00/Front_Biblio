@@ -10,7 +10,7 @@ function Principal() {
     <div className="App">
       <nav class="nav">
         <img src={home} alt="home"/>
-        <Link to={"/Cat"}><img  src={categ} alt="categoria"/></Link>
+        <Link to={"/Categoria/Show"}><img  src={categ} alt="categoria"/></Link>
         
         <img src={usu} alt="usuario"/>
     </nav>
