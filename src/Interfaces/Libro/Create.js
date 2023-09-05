@@ -103,16 +103,13 @@ useEffect(()=>{getDataAut()},[])
                       
               <input type='file' name='imagen' data={data} setData={setdata}/>  
               <div class='row'>
-              <label className='form-label' >Categoria</label>{/** <input type='text' id='categoria' name='categoria' value={listcategoria.name} list='categorias' data={data} setData={setdata} onChange={(e) => {
-    console.log('Valor del input:', e.target.dato, e.target.value);}}/>*/}
-                
-                <input type="text" list="Personal" name="nombre" />
-                {/* Campo oculto para almacenar la ID que se enviará al backend */}
-                <input type="hidden" name="id" value="" onChange={(e) => {
+              <label className='form-label' >Categoria</label>
+              <input type='text' id='categoria' name='categoria' value={listcategoria.name} list='categorias' data={data} setData={setdata} onChange={(e) => {
     console.log('Valor del input:', e.target.dato, e.target.value);}}/>
+              
                 <datalist id='categorias' >
                   {optionsCat.map((option)=>(
-                    <option key={option.value} value={option.value}>{option.label}</option>
+                    <option key={option.value} value={[option.value, option.label]}/>
                   ))}
                 </datalist>
               </div>
