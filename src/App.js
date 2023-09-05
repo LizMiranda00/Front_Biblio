@@ -4,19 +4,24 @@ import Prestamo from './Interfaces/Prestamo';
 import Principal from './Interfaces/Principal';
 import Admi from './Interfaces/Admi';
 import Empleado from './Interfaces/Empleado'
-import Categorias from './Interfaces/Categorias';
 import Reglib from './Interfaces/Reglib';
 import Regper from './Interfaces/Regper';
 import AutorShow from './Interfaces/Autor/Show';
 import AutorCreate from './Interfaces/Autor/Create';
-import AutorEdit from './Interfaces/Autor/Edit';
 import AutorDelete from './Interfaces/Autor/Delete';
+<<<<<<< HEAD
 import CategoriaShow from './Interfaces/Categoria/Show'
 import CategoriaCreate from './Interfaces/Categoria/Create'
 import CategoriaEdit from './Interfaces/Categoria/Edit'
 import LibroShow from './Interfaces/Libro/Show'
 import LibroCreate from './Interfaces/Libro/Create'
 import Login from './Login'
+=======
+import CategoriaShow from './Interfaces/Categoria/Show';
+import CategoriaCreate from './Interfaces/Categoria/Create';
+import ClienteCreate from './Interfaces/Cliente/Create';
+import ClienteShow from './Interfaces/Cliente/Show';
+>>>>>>> prueba
 
 const App = () => {
   return (
@@ -28,14 +33,14 @@ const App = () => {
         <Route path='/Presta' element={<Prestamo/>}></Route>
         <Route path='/Adm' element={<Admi/>}></Route>
         <Route path='/Emp' element={<Empleado/>}></Route>
-        <Route path='/Cat' element={<Categorias/>}></Route>
+        
         <Route path='/Regli' element={<Reglib/>}></Route>
         <Route path='/Regpe' element={<Regper/>}></Route>
 
         <Route path='/Autor' element={<AutorShow/>}></Route>
         <Route path='/Autor/Create' element={<AutorCreate/>}></Route>
-        <Route path='/Autor/Edit' element={<AutorEdit/>}></Route>
         <Route path='/Autor/Delete' element={<AutorDelete/>}></Route>
+<<<<<<< HEAD
 
         <Route path='/Categoria' element={<CategoriaShow/>}></Route>
         <Route path='/Categoria/Create' element={<CategoriaCreate/>}></Route>
@@ -45,6 +50,13 @@ const App = () => {
         <Route path='/Login' element={<Login/>}></Route>
         
 
+=======
+        <Route path='/Categoria/Create' element={<CategoriaCreate/>}></Route>
+        <Route path='/Categoria/Show' element={<CategoriaShow/>}></Route>
+        <Route path='/Cliente/Create' element={<ClienteCreate/>}></Route>
+        <Route path='/Cliente/Show' element={<ClienteShow/>}></Route>
+      
+>>>>>>> prueba
       </Routes>
       </BrowserRouter>
 
