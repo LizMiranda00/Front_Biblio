@@ -6,11 +6,9 @@ import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
-<<<<<<< HEAD
 import { ipAddress } from "../../Componentes/confip";
-=======
+
 import Modal from 'react-modal';
->>>>>>> prueba
 
 Modal.setAppElement('#root'); // Esto es necesario para evitar problemas de accesibilidad
 
@@ -42,11 +40,7 @@ const Show = () => {
   }
   /*para obtener la lista de autores en el card de la bd*/ 
   const [listautor,setlistautor]=useState([])
-<<<<<<< HEAD
   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/autores`) 
-=======
-  const getData=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/autores') 
->>>>>>> prueba
   setlistautor(response.data)
  }
  /**el get data esta obteniendo autores y van sumando cada que se crea */

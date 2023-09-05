@@ -13,12 +13,8 @@ const Create = () => {
   /*crear autor*/
   const navigate=useNavigate();
   const RegistrarAutor=async()=>{
-<<<<<<< HEAD
     await axios.post(`http://${ipAddress}/app/bliblioteca/public/api/autor`,data) //con esto mando
     navigate('/Autor')
-=======
-    
->>>>>>> prueba
     //console.log(data);
   }
   const [data,setdata]=useState({ci:0,nombre:''})

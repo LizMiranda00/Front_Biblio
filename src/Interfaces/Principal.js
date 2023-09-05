@@ -9,7 +9,6 @@ function Principal() {
   return (
     <div className="App">
       <nav class="nav">
-<<<<<<< HEAD
         <div >
           <img src={home} alt="home" />
           <Link to={"/Autor"}>
@@ -30,16 +29,6 @@ function Principal() {
       <main class="logo">
         <img className="log" src={logo} alt="logo" />
       </main>
-=======
-        <img src={home} alt="home"/>
-        <Link to={"/Categoria/Show"}><img  src={categ} alt="categoria"/></Link>
-        
-        <img src={usu} alt="usuario"/>
-    </nav>
-    <main class="logo">
-        <img className='log' src={logo} alt="logo"/>
-    </main>
->>>>>>> prueba
     </div>
   );
 }

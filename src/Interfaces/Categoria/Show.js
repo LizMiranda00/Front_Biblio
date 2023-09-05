@@ -4,12 +4,11 @@ import home from '../../img/home.png';
 import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-=======
+
 import axios from 'axios';
 import Modal from 'react-modal';
 Modal.setAppElement('#root'); // Esto es necesario para evitar problemas de accesibilidad
->>>>>>> prueba
+
 
 import axios from 'axios';
 import {ipAddress} from "../../Componentes/confip";
@@ -43,11 +42,8 @@ const Show = () => {
   }
   /*para obtener la lista de categorias en el card de la bd*/ 
    const [listcategoria,setlistcategoria]=useState([])
-<<<<<<< HEAD
    const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/categorias`) 
-=======
-   const getData=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/categorias') 
->>>>>>> prueba
+
    setlistcategoria(response.data)
   }
   /**el get data esta obteniendo categorias y van sumando cada que se crea */
@@ -82,14 +78,6 @@ const Show = () => {
     }
   };
 
-  const searcher = (e) => {
-    setSearch(e.target.value.toLowerCase()); // Convierte la entrada del usuario a minúsculas
-  }
-  const [search, setSearch] = useState("");
-  const filteredCateg = listcategoria.filter((categoria) =>
-    categoria.nombre.toLowerCase().includes(search) // Filtrar por la propiedad correcta del autor
-  );
-
 
 
     const iconos=[{src:home,alt:'home'},{src:categ,alt:'categorias'}] 
@@ -101,22 +89,14 @@ const Show = () => {
       <h1>Categoria</h1>
       <div class='row'>
           <div class='col-9'>
-<<<<<<< HEAD
-          <input value={search} onChange={searcher} className='buscador' type='text' placeholder='Introduzca nombre del la categoria' />
-=======
             <input value={search} onChange={searcher}className='buscador' type='search' placeholder='Ingrese la categoria o autor del libro que desea' />
->>>>>>> prueba
           </div>
           <div class='col-3'>
             <button class="card-button btn btn-primary" onClick={toCreate} >Crear Categoria</button> 
           </div>
       </div>
-      
-<<<<<<< HEAD
       <div className='cardlist'>{filteredCategorias.map((categoria)=>
-=======
-      <div className='cardlist'>{filteredCateg.map((categoria)=>
->>>>>>> prueba
+
         <div class="card">
           <div class="card-body">
             <h5 class="card-title text-center align-items-center">{categoria.nombre}</h5>
