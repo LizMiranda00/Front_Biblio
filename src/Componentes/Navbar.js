@@ -5,6 +5,7 @@ import categ from "../img/1164620.png";
 import usu from "../img/1769041.png";
 import autors from "../img/autor.png";
 import logo from "../img/logo.png";
+import categoria from "../img/cate.png"
 
 function Navbar() {
   return (
@@ -12,13 +13,13 @@ function Navbar() {
       <div>
         <img src={home} alt="home" />
         <Link to={"/Autor"}>
-            <img src={autors} alt="categoria" />
+            <img src={autors} alt="Autor" />
         </Link>
         <Link to={"/Categoria"}>
-          <label>Categoria</label>
+          <img src={categoria} alt="categoria" />
         </Link>
         <Link to={"/Libro"}>
-          <img src={categ} alt="categoria" />
+          <img src={categ} alt="libro" />
         </Link>
         <img src={usu} alt="usuario" />
       </div>
