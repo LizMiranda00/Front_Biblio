@@ -13,7 +13,7 @@ import CategoriaCreate from './Interfaces/Categoria/Create';
 import ClienteCreate from './Interfaces/Cliente/Create';
 import ClienteShow from './Interfaces/Cliente/Show';
 import PrestamoAlquiler from './Interfaces/Prestamo/Alquiler';
-
+import PrestamoShow from './Interfaces/Prestamo/Show'
 const App = () => {
   return (
     
@@ -35,7 +35,7 @@ const App = () => {
         <Route path='/Cliente/Create' element={<ClienteCreate/>}></Route>
         <Route path='/Cliente/Show' element={<ClienteShow/>}></Route>
         <Route path='/Prestamo/Alquiler' element={<PrestamoAlquiler/>}></Route>
-      
+        <Route path='/Prestamo/Show' element={<PrestamoShow/>}></Route>
       </Routes>
       </BrowserRouter>
 

@@ -98,12 +98,12 @@ const Alquiler = () => {
         onChange={(e) => setPersonalId(e.target.value)}
       />
       <label className='letras'>Cliente:</label>
-      <Select
+      <Select 
         options={opcionesClientes}
         value={cliente}
         onChange={(e) => setCliente(e)}
       />
-      <button className='button' onClick={handleSubmit}>Prestamo</button>
+      <button className='button' onClick={handleSubmit}>Registrar prestamo</button>
     </div>
   );
 };
