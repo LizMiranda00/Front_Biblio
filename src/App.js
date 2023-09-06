@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Prestamo from './Interfaces/Prestamo';
 import Principal from './Interfaces/Principal';
 import Admi from './Interfaces/Admi';
 import Empleado from './Interfaces/Empleado'
@@ -13,6 +12,7 @@ import CategoriaShow from './Interfaces/Categoria/Show';
 import CategoriaCreate from './Interfaces/Categoria/Create';
 import ClienteCreate from './Interfaces/Cliente/Create';
 import ClienteShow from './Interfaces/Cliente/Show';
+import PrestamoAlquiler from './Interfaces/Prestamo/Alquiler';
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
       <Routes>
          {/* <Route path='/ruta del navegador' element={el archivo .js o interfas que quiero utilizar}></Route> */}
         <Route path='/' element={<Principal/>}></Route>
-        <Route path='/Presta' element={<Prestamo/>}></Route>
+        
         <Route path='/Adm' element={<Admi/>}></Route>
         <Route path='/Emp' element={<Empleado/>}></Route>
         
@@ -34,6 +34,7 @@ const App = () => {
         <Route path='/Categoria/Show' element={<CategoriaShow/>}></Route>
         <Route path='/Cliente/Create' element={<ClienteCreate/>}></Route>
         <Route path='/Cliente/Show' element={<ClienteShow/>}></Route>
+        <Route path='/Prestamo/Alquiler' element={<PrestamoAlquiler/>}></Route>
       
       </Routes>
       </BrowserRouter>
