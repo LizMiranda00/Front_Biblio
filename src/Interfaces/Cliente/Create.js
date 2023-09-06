@@ -1,27 +1,26 @@
 import React, { useState } from 'react'
-import Navegador from '../../Componentes/Navegador';
-import home from '../../img/home.png';
-import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import Inputnum from '../../Componentes/Inputnum';
 import Inputtexto from '../../Componentes/Inputtexto';
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../../Componentes/Navbar";
+
 import axios from 'axios';
+import {ipAddress} from "../../Componentes/confip";
 
 const Create = () => {
   /*crear autor*/
   const navigate=useNavigate();
   const RegistrarCliente=async()=>{
-    await axios.post('http://192.168.1.2/app/bliblioteca/public/api/cliente',data) //con esto mando
-    navigate('/Cliente/Show')
+    await axios.post(`http://${ipAddress}/app/bliblioteca/public/api/cliente`,data) //con esto mando
+    navigate('/Cliente')
     //console.log(data);
   }
   const [data,setdata]=useState({ci:0,nombre:''})
-    const iconos=[{src:home,alt:'home'},{src:categ,alt:'clientes'}] 
   return (
 
     <div>
-     <Navegador iconos={iconos}/>
+     <Navbar/>
      <div class="container d-flex justify-content-center align-items-start">
         <div class="card w-50" >
           <div class="card-body">

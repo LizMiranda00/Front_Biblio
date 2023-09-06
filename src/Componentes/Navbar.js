@@ -4,14 +4,15 @@ import home from "../img/home.png";
 import categ from "../img/1164620.png";
 import usu from "../img/1769041.png";
 import autors from "../img/autor.png";
-import logo from "../img/logo.png";
 import categoria from "../img/cate.png"
 
 function Navbar() {
   return (
     <nav className="nav">
       <div>
-        <img src={home} alt="home" />
+        <Link to={"/"}>
+            <img src={home} alt="home" />
+        </Link>
         <Link to={"/Autor"}>
             <img src={autors} alt="Autor" />
         </Link>
@@ -21,7 +22,9 @@ function Navbar() {
         <Link to={"/Libro"}>
           <img src={categ} alt="libro" />
         </Link>
-        <img src={usu} alt="usuario" />
+        <Link to={"/Cliente"}>
+          <img src={usu} alt="usuario" />
+        </Link>
       </div>
       <Link to={"/login"} className="button-login">login</Link>
     </nav>

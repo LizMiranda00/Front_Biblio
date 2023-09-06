@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import Navegador from '../../Componentes/Navegador';
-import home from '../../img/home.png';
-import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import Inputnum from '../../Componentes/Inputnum';
 import Inputtexto from '../../Componentes/Inputtexto';
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../../Componentes/Navbar";
 
 import axios from 'axios';
 import { ipAddress } from "../../Componentes/confip";
@@ -19,11 +17,10 @@ const Create = () => {
     //console.log(data);
   }
   const [data,setdata]=useState({ci:0,nombre:''})
-    const iconos=[{src:home,alt:'home'},{src:categ,alt:'categorias'}] 
   return (
 
     <div>
-     <Navegador iconos={iconos}/>
+      <Navbar/>
      <div class="container d-flex justify-content-center align-items-start">
         <div class="card w-50" >
           <div class="card-body">

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Navegador from '../../Componentes/Navegador';
-import home from '../../img/home.png';
-import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../../Componentes/Navbar";
 
 import axios from 'axios';
 import { ipAddress } from "../../Componentes/confip";
@@ -76,11 +74,10 @@ const Show = () => {
   );
 
 
-   const iconos=[{src:home,alt:'home'},{src:categ,alt:'categorias'}] 
 
   return (
   <div>
-    <Navegador iconos={iconos}/>
+    <Navbar/>
     <div class='container'>
       <h1>Autor</h1>
       <div class='row'>

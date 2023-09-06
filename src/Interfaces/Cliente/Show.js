@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Navegador from '../../Componentes/Navegador';
-import home from '../../img/home.png';
-import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../../Componentes/Navbar";
+
 import axios from 'axios';
+import {ipAddress} from "../../Componentes/confip";
 import Modal from 'react-modal';
 Modal.setAppElement('#root'); // Esto es necesario para evitar problemas de accesibilidad
 
@@ -38,7 +38,7 @@ const Show = () => {
   }
   /*para obtener la lista de categorias en el card de la bd*/ 
    const [listcliente,setlistcliente]=useState([])
-   const getData=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/clientes') 
+   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/clientes`) 
    setlistcliente(response.data)
   }
   /**el get data esta obteniendo categorias y van sumando cada que se crea */
@@ -75,11 +75,10 @@ const Show = () => {
 
 
 
-    const iconos=[{src:home,alt:'home'},{src:categ,alt:'clientes'}] 
     
   return (
   <div>
-    <Navegador iconos={iconos}/>
+    <Navbar/>
     <div class='container'>
       <h1>Cliente</h1>
       <div class='row'>

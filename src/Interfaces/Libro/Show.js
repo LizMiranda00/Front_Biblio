@@ -4,6 +4,7 @@ import home from '../../img/home.png';
 import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../../Componentes/Navbar";
 
 import {ipAddress} from "../../Componentes/confip";
 import axios from 'axios';
@@ -34,11 +35,11 @@ const Show = () => {
   const filteredLibros = listlibro.filter((libro) =>
     libro.nombre.toLowerCase().includes(search) // Filtrar por la propiedad correcta del autor
   );
-    const iconos=[{src:home,alt:'home'},{src:categ,alt:'categorias'}] 
+    
     
   return (
   <div>
-    <Navegador iconos={iconos}/>
+    <Navbar/>
     <div class='container'>
       <h1>Libros</h1>
       <div class='row'>

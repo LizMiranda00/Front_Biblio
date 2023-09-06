@@ -1,5 +1,7 @@
 import axios from "axios";
+import {ipAddress} from "./Componentes/confip";
 import React, { useState } from "react";
+import logo from "./img/logo.png"
 
 function Login({setUser}) {
   const [email, setEmail] = useState("");
@@ -18,7 +20,7 @@ function Login({setUser}) {
 
     try {
             const response = await axios.post(
-        "http://192.168.1.2/app/bliblioteca/public/api/login",
+        `http://${ipAddress}/app/bliblioteca/public/api/login`,
         {
           email: email,
           password: password,
@@ -38,7 +40,7 @@ function Login({setUser}) {
     }
   };
   return (
-    <div class="container d-flex justify-content-center align-items-center w-100" style='background-image: url("../");'>
+    <div class="container d-flex justify-content-center align-items-center w-100" style={{backgroundImage: 'url("./img/logo.png")'}}>
       <div class="row" >
               <div class="card">
                   <h1>Login</h1>

@@ -1,32 +1,14 @@
 
 import "../App.css";
-import { Link } from "react-router-dom";
 import Navbar from "../Componentes/Navbar";
+import logo from '../img/logo.png';
 function Principal() {
   return (
     <div className="App">
-      {/**<nav class="nav">
-        <div >
-          <img src={home} alt="home" />
-          <Link to={"/Autor"}>
-            <label>Autor</label>
-          </Link>
-          <Link to={"/Categoria"}>
-            <label>Categoria</label>
-          </Link>
-          <Link to={"/Libro"}>
-            <img src={categ} alt="categoria" />
-          </Link>
-
-          <img src={usu} alt="usuario" />
-        </div>
-
-        <Link to={"/login"} className="button-login">login</Link>
-      </nav> 
+      <Navbar />
       <main class="logo">
         <img className="log" src={logo} alt="logo" />
-      </main>*/}
-      <Navbar />
+      </main>
       
     </div>
   );
