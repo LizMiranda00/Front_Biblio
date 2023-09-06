@@ -6,12 +6,12 @@ import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
+import {ipAddress} from "../../Componentes/confip";
 import Modal from 'react-modal';
 Modal.setAppElement('#root'); // Esto es necesario para evitar problemas de accesibilidad
 
 
-import axios from 'axios';
-import {ipAddress} from "../../Componentes/confip";
+
 
 const Show = () => {
 
@@ -60,7 +60,7 @@ const Show = () => {
    const updateCate = async () => {
     try {
       // Realiza una solicitud PUT al servidor para actualizar el nombre de la categoria
-      await axios.put(`http://192.168.1.2/app/bliblioteca/public/api/categoria/${editingCategoria.id}`, {
+      await axios.put(`http://${ipAddress}/app/bliblioteca/public/api/categoria/${editingCategoria.id}`, {
         nombre: newCateName,
       });
 

@@ -1,14 +1,11 @@
-import home from "../img/home.png";
-import categ from "../img/1164620.png";
-import usu from "../img/1769041.png";
-import logo from "../img/logo.PNG";
+
 import "../App.css";
 import { Link } from "react-router-dom";
-
+import Navbar from "../Componentes/Navbar";
 function Principal() {
   return (
     <div className="App">
-      <nav class="nav">
+      {/**<nav class="nav">
         <div >
           <img src={home} alt="home" />
           <Link to={"/Autor"}>
@@ -25,10 +22,12 @@ function Principal() {
         </div>
 
         <Link to={"/login"} className="button-login">login</Link>
-      </nav>
+      </nav> 
       <main class="logo">
         <img className="log" src={logo} alt="logo" />
-      </main>
+      </main>*/}
+      <Navbar />
+      
     </div>
   );
 }

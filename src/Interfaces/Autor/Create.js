@@ -6,6 +6,7 @@ import '../Estilos.css'
 import Inputnum from '../../Componentes/Inputnum';
 import Inputtexto from '../../Componentes/Inputtexto';
 import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 import { ipAddress } from "../../Componentes/confip";
 

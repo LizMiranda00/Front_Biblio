@@ -4,20 +4,22 @@ import home from '../../img/home.png';
 import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
+
+import {ipAddress} from "../../Componentes/confip";
 import axios from 'axios';
 
 
 const Show = () => {
   const navigate=useNavigate();
   const backtolist=()=>{
-    navigate('/libros')
+    navigate('/Libro')
   }
   const toCreate=()=>{
-    navigate('/libros/Create')
+    navigate('/Libro/Create')
   }
   /*para obtener la lista de categorias en el card de la bd*/ 
    const [listlibro,setlistlibro]=useState([])
-   const getData=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/libros') 
+   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/libros`) 
    setlistlibro(response.data)
   }
   /**el get data esta obteniendo categorias y van sumando cada que se crea */

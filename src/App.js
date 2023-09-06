@@ -11,7 +11,6 @@ import AutorCreate from './Interfaces/Autor/Create';
 import AutorDelete from './Interfaces/Autor/Delete';
 import CategoriaShow from './Interfaces/Categoria/Show'
 import CategoriaCreate from './Interfaces/Categoria/Create'
-import CategoriaEdit from './Interfaces/Categoria/Edit'
 import LibroShow from './Interfaces/Libro/Show'
 import LibroCreate from './Interfaces/Libro/Create'
 import Login from './Login'
@@ -38,7 +37,7 @@ const App = () => {
 
         <Route path='/Categoria' element={<CategoriaShow/>}></Route>
         <Route path='/Categoria/Create' element={<CategoriaCreate/>}></Route>
-        <Route path='/Categoria/Edit' element={<CategoriaEdit/>}></Route>
+        
         <Route path='/Libro' element={<LibroShow/>}></Route>
         <Route path='/Libro/Create' element={<LibroCreate/>}></Route>
         <Route path='/Login' element={<Login/>}></Route>

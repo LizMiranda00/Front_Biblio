@@ -5,6 +5,8 @@ import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import Inputtexto from '../../Componentes/Inputtexto';
 import { Await, useNavigate } from 'react-router-dom';
+
+import {ipAddress} from "../../Componentes/confip";
 import axios from 'axios';
 import Select from 'react-select';
 
@@ -16,7 +18,7 @@ const Create = () => {
   }
   /*para obtener la lista de libros en el card de la bd*/ 
   const [listlibro,setlistlibro]=useState([])
-  const getData=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/libros') 
+  const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/libros`) 
   setlistlibro(response.data)
  }
  /**el get data esta obteniendo libros y van sumando cada que se crea */
@@ -24,7 +26,7 @@ const Create = () => {
  
   /* obtener la lista de categorias en el card de la bd*/ 
   const [listcategoria,setlistcategoria]=useState([])
-  const getDataCat=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/categorias') 
+  const getDataCat=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/categorias`) 
   setlistcategoria(response.data)
  }
  /**el get data esta obteniendo categorias y van sumando cada que se crea */
@@ -32,7 +34,7 @@ const Create = () => {
 
   /* obtener la lista de personal para el select de la bd*/ 
   const [listpersonal, setlistpersonal]=useState([])
-  const getDataPer=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/personals')
+  const getDataPer=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/personals`)
   setlistpersonal(response.data)
 }
 /**el get data esta obteniendo personal para el select de la BD*/
@@ -41,7 +43,7 @@ useEffect(()=>{getDataPer()},[])
 
   /*para obtener la lista de autores en el card de la bd*/ 
 const [listautor,setlistautor]=useState([])
-const getDataAut=async()=>{let response=await axios.get('http://192.168.1.2/app/bliblioteca/public/api/autores') 
+const getDataAut=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/autores`) 
 setlistautor(response.data)
 }
 /**el get data esta obteniendo autores y van sumando cada que se crea */
@@ -63,7 +65,7 @@ useEffect(()=>{getDataAut()},[])
    
 
   const Registrarlibro=async()=>{
-    await axios.post('http://192.168.1.2/app/bliblioteca/public/api/libro',data) //con esto mando
+    await axios.post(`http://${ipAddress}/app/bliblioteca/public/api/libro`,data) //con esto mando
     navigate('/Libros')
     //console.log(data);
   }
@@ -103,10 +105,10 @@ useEffect(()=>{getDataAut()},[])
     console.log('Valor de data:', data);
     console.log('Valor de setdata:', setdata);}}/>
                       
-              <input type='file' name='imagen' data={data} setData={setdata} />  
+              <input className='form-control' type='file' name='imagen' data={data} setData={setdata} />  
               <div class='row'>
               <label className='form-label' >Categoria</label>
-              <input type='text' id='categoria' name='personal' value={listcategoria.id} list='Categoria' data={data} setData={setdata} onChange={(e) => {
+              <input className='form-control' type='text' id='categoria' name='personal' value={listcategoria.id} list='Categoria' data={data} setData={setdata} onChange={(e) => {
     console.log('Valor del input:',data[0], e.target.value[0]);}}/>
                   <datalist id='Categoria'>
                     {listcategoria.map((categoria,id)=>(
@@ -116,7 +118,7 @@ useEffect(()=>{getDataAut()},[])
               </div>
               <div class='row'>
                   <label className='form-label' >Personal</label>
-                  <input type='text' id='personal' name='personal' value={listpersonal.name} list='Personal' data={data} setData={setdata} onChange={(e) => {
+                  <input className='form-control' type='text' id='personal' name='personal' value={listpersonal.name} list='Personal' data={data} setData={setdata} onChange={(e) => {
     console.log('Valor del input:', e.target.key, e.target.value);}}/>
                   <datalist id='Personal'>
                     {listpersonal.map((personal,id)=>(
