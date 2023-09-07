@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React ,{useState}from 'react'
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Principal from './Interfaces/Principal';
 import Admi from './Interfaces/Admi';
 import Empleado from './Interfaces/Empleado'
@@ -18,11 +18,19 @@ import ClienteShow from './Interfaces/Cliente/Show';
 import PrestamoAlquiler from './Interfaces/Prestamo/Alquiler';
 import PrestamoShow from './Interfaces/Prestamo/Show'
 const App = () => {
+  const [user, setUser] = useState("");
   return (
     
       <BrowserRouter>
       <Routes>
-         {/* <Route path='/ruta del navegador' element={el archivo .js o interfas que quiero utilizar}></Route> */}
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/Libro" /> : <Login setUser={setUser} />}
+        />
+        <Route
+          path="/"
+          element={user ? <Principal /> : <Navigate to="/login" />}
+        />
         <Route path='/' element={<Principal/>}></Route>
         
         <Route path='/Adm' element={<Admi/>}></Route>
@@ -44,6 +52,7 @@ const App = () => {
         
         <Route path='/Cliente/Create' element={<ClienteCreate/>}></Route>
         <Route path='/Cliente' element={<ClienteShow/>}></Route>
+
         <Route path='/Prestamo/Alquiler' element={<PrestamoAlquiler/>}></Route>
         <Route path='/Prestamo/Show' element={<PrestamoShow/>}></Route>
       </Routes>

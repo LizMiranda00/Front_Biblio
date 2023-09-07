@@ -19,7 +19,7 @@ function Login({setUser}) {
 
 
     try {
-            const response = await axios.post(
+      const response = await axios.post(
         `http://${ipAddress}/app/bliblioteca/public/api/login`,
         {
           email: email,
@@ -40,16 +40,15 @@ function Login({setUser}) {
     }
   };
   return (
-    <div class="container d-flex justify-content-center align-items-center w-100" style={{backgroundImage: 'url("./img/logo.png")'}}>
-      <div class="row" >
+    <div class="container d-flex justify-content-center align-items-center vh-100" style={{backgroundImage: `url(${logo})`,backgroundSize: 'cover', backgroundPosition: 'center'}}>
               <div class="card">
-                  <h1>Login</h1>
+                  <h1 class="card-title text-center align-items-center" >Login </h1>
                   <div class="card-body">
                     <form action="" onSubmit={handleSubmit}>
                       <div class="row">
-                        <p class="card-text"><strong>E-mail</strong></p>
+                        <p class="card-text">E-mail</p>
                         <input
-                            class="form-group"
+                            class="form-control"
                             type="email"
                             name="email"
                             value={email}
@@ -57,9 +56,9 @@ function Login({setUser}) {
                           />
                       </div>
                       <div class="row">
-                        <p class="card-text"><strong>Contraseña:</strong></p>
+                        <p class="card-text">Contraseña:</p>
                         <input
-                          class="form-group"
+                          class="form-control"
                           type="password"
                           name="password"
                           value={password}
@@ -75,7 +74,6 @@ function Login({setUser}) {
                   </div>
               </div>
       </div>
-   </div>
   );
 }
 

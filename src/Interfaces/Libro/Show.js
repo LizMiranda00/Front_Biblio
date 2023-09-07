@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Navegador from '../../Componentes/Navegador';
-import home from '../../img/home.png';
-import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../../Componentes/Navbar";

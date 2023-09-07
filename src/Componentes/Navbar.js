@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Asumiendo que estás utilizando React Router para las rutas
+import { Link } from 'react-router-dom'; 
 import home from "../img/home.png";
 import categ from "../img/1164620.png";
 import usu from "../img/1769041.png";
@@ -10,9 +10,6 @@ function Navbar() {
   return (
     <nav className="nav">
       <div>
-        <Link to={"/"}>
-            <img src={home} alt="home" />
-        </Link>
         <Link to={"/Autor"}>
             <img src={autors} alt="Autor" />
         </Link>

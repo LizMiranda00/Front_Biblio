@@ -4,7 +4,7 @@ import Inputtexto from '../../Componentes/Inputtexto';
 import Inputimage from '../../Componentes/Inputimg';
 import Navbar from "../../Componentes/Navbar";
 
-import {useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 import {ipAddress} from "../../Componentes/confip";
 import axios from 'axios';
@@ -16,13 +16,6 @@ const Create = () => {
   const backtolist=()=>{
     navigate('/Libros')
   }
-  /*para obtener la lista de libros en el card de la bd*/ 
-  const [listlibro,setlistlibro]=useState([])
-  const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/libros`) 
-  setlistlibro(response.data)
- }
- /**el get data esta obteniendo libros y van sumando cada que se crea */
-  useEffect(()=>{getData()},[])
  
   /* obtener la lista de categorias en el card de la bd*/ 
   const [listcategoria,setlistcategoria]=useState([])
