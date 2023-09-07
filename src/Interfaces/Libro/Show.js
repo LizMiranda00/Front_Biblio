@@ -18,7 +18,7 @@ const Show = () => {
   }
   /*para obtener la lista de categorias en el card de la bd*/ 
    const [listlibro,setlistlibro]=useState([])
-   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/bliblioteca/public/api/libros`) 
+   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/libros`) 
    setlistlibro(response.data)
   }
   /**el get data esta obteniendo categorias y van sumando cada que se crea */

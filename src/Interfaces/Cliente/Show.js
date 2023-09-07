@@ -38,7 +38,7 @@ const Show = () => {
   }
   /*para obtener la lista de categorias en el card de la bd*/ 
    const [listcliente,setlistcliente]=useState([])
-   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/bliblioteca/public/api/clientes`) 
+   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/clientes`) 
    setlistcliente(response.data)
   }
   /**el get data esta obteniendo categorias y van sumando cada que se crea */
@@ -47,7 +47,7 @@ const Show = () => {
    const updateClie = async () => {
     try {
       // Realiza una solicitud PUT al servidor para actualizar el nombre de la categoria
-      await axios.put(`http://192.168.100.5/bliblioteca/public/api/cliente/${editingCliente.id}`, {
+      await axios.put(`http://${ipAddress}/app/bliblioteca/public/api/cliente/${editingCliente.id}`, {
         nombre: newClieName,
       });
 

@@ -16,17 +16,11 @@ const Create = () => {
   const backtolist=()=>{
     navigate('/Libros')
   }
-  /*para obtener la lista de libros en el card de la bd*/ 
-  const [listlibro,setlistlibro]=useState([])
-  const getData=async()=>{let response=await axios.get(`http://${ipAddress}/bliblioteca/public/api/libros`) 
-  setlistlibro(response.data)
- }
- /**el get data esta obteniendo libros y van sumando cada que se crea */
-  useEffect(()=>{getData()},[])
+  
  
   /* obtener la lista de categorias en el card de la bd*/ 
   const [listcategoria,setlistcategoria]=useState([])
-  const getDataCat=async()=>{let response=await axios.get(`http://${ipAddress}/bliblioteca/public/api/categorias`) 
+  const getDataCat=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/categorias`) 
   setlistcategoria(response.data)
  }
  /**el get data esta obteniendo categorias y van sumando cada que se crea */
@@ -36,7 +30,7 @@ const Create = () => {
 
   /*para obtener la lista de autores en el card de la bd*/ 
 const [listautor,setlistautor]=useState([])
-const getDataAut=async()=>{let response=await axios.get(`http://${ipAddress}/bliblioteca/public/api/autores`) 
+const getDataAut=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/autores`) 
 setlistautor(response.data)
 }
 /**el get data esta obteniendo autores y van sumando cada que se crea */
@@ -59,7 +53,7 @@ const handleAutorChange = (selectedOptions) => {
   
   const Registrarlibro=async()=>{
     console.log(data);
-    await axios.post(`http://${ipAddress}/bliblioteca/public/api/libro`,data) //con esto mando
+    await axios.post(`http://${ipAddress}/app/bliblioteca/public/api/libro`,data) //con esto mando
     navigate('/Libro')
     
   }

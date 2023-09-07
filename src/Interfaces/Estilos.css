@@ -100,3 +100,24 @@ h1{
      border-color: rgb(242, 0, 255);
    
    }
+   .prestamos-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    
+    .card {
+      margin: 10px;
+      flex: 0 0 calc(20% - 20px);
+      /* Añade cualquier otro estilo que desees para las tarjetas aquí */
+    }
+    .devolverletra{
+      font-size: 30px;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px; /* Ajusta el margen según tu diseño */
+    }
+    
+    

@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Navegador from '../../Componentes/Navegador';
-import home from '../../img/home.png';
-import categ from '../../img/1164620.png';
 import '../Estilos.css';
 import axios from 'axios';
 import Modal from 'react-modal';
-
-const iconos = [{ src: home, alt: 'home' }, { src: categ, alt: 'clientes' }];
+import Navbar from "../../Componentes/Navbar";
 
 const Show = () => {
   const [prestamos, setPrestamos] = useState([]);
-  
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedPrestamoId, setSelectedPrestamoId] = useState(null);
   const [selectedLibros, setSelectedLibros] = useState([]);
- 
   const [observaciones, setObservaciones] = useState(''); 
+  
   const openModal = (prestamoId) => {
     setSelectedPrestamoId(prestamoId);
     setModalOpen(true);
@@ -24,6 +19,7 @@ const Show = () => {
   const closeModal = () => {
     setSelectedPrestamoId(null);
     setSelectedLibros([]);
+    setObservaciones('');
     setModalOpen(false);
   };
   
@@ -38,33 +34,45 @@ const Show = () => {
   };
   
   const handleDevolverLibros = async () => {
+    console.log('Prestamo ID:', selectedPrestamoId);
+    console.log('Libros seleccionados:', selectedLibros);
+
     try {
-      // Aquí puedes enviar los libros seleccionados al servidor
-      const response = await axios.post('http://192.168.100.5/bliblioteca/public/api/devolucion', {
+      const response = await axios.post('http://192.168.1.20/app/bliblioteca/public/api/devolucion', {
         prestamo_id: selectedPrestamoId,
-        libros: selectedLibros,
+        libros: selectedLibros, // Envía los IDs como un array
         observaciones: observaciones, 
       });
 
-      // Lógica para manejar la respuesta de la API
-      console.log(response.data);
+      if (response.status === 201) {
+        const newPrestamos = prestamos.map(prestamo => {
+          if (prestamo.id === selectedPrestamoId) {
+            // Filtrar los libros que no se devolvieron
+            prestamo.libros_no_devueltos = prestamo.libros_no_devueltos.filter(libro => !selectedLibros.includes(libro.id));
+          }
+          return prestamo;
+        });
 
-      // Finalmente, cierra el modal
-      closeModal();
+        setPrestamos(newPrestamos);
+
+        closeModal();
+        window.location.reload(); // Recarga la página después de la devolución
+      } else {
+        console.error('Error al devolver los libros:', response);
+      }
     } catch (error) {
       console.error('Error al enviar los datos:', error);
     }
   };
+
   useEffect(() => {
-    // Realizar una solicitud GET para obtener la lista de préstamos desde tu API
-    axios.get('http://192.168.100.5/bliblioteca/public/api/prestamos')
+    axios.get('http://192.168.1.20/app/bliblioteca/public/api/prestamos')
       .then((response) => {
-        // Mapea los datos de préstamos y extrae solo los nombres de los libros
         const prestamosData = response.data.map((prestamo) => ({
           ...prestamo,
-          libros: prestamo.libros.map((libro) => libro.nombre), // Extraer los nombres de los libros
+          libros: prestamo.libros.map((libro) => ({ id: libro.id, nombre: libro.nombre })), // Incluir el ID y el nombre del libro
         }));
-        setPrestamos(prestamosData); // Actualiza el estado prestamos con los datos mapeados
+        setPrestamos(prestamosData);
       })
       .catch((error) => {
         console.error('Error al obtener los préstamos:', error);
@@ -73,7 +81,7 @@ const Show = () => {
 
   return (
     <div>
-      <Navegador iconos={iconos} />
+      <Navbar/>
       <h1>Registro de Préstamos</h1>
       
       <div className='prestamos-container'>
@@ -83,43 +91,48 @@ const Show = () => {
             <p>Fecha Inicial: {prestamo.fecha}</p>
             <p>Fecha de Devolución: {prestamo.fecha_devolucion}</p>
             <p>Cantidad: {prestamo.cantidad}</p>
-            <p>Libros: {prestamo.libros.join(', ')}</p> {/* Mostrar los nombres de los libros separados por comas */}
-           <button onClick={() => openModal(prestamo.id)}>Devolver</button>
+            <p>
+              Libros:
+              {prestamo.libros_no_devueltos.map(libro => (
+                <span key={libro.id}>
+                  {libro.id} - {libro.nombre}
+                  {prestamo.libros_no_devueltos.indexOf(libro) !== prestamo.libros_no_devueltos.length - 1 && ', '}
+                </span>
+              ))}
+            </p>
+            <button onClick={() => openModal(prestamo.id)}>Devolver</button>
           </div>
         ))}
- </div>
-<Modal
+      </div>
+      <Modal
         className='react-modal-content'
         isOpen={modalOpen}
         onRequestClose={closeModal}
         contentLabel='Devolver Préstamo'
       >
-        <h1>Devolver Préstamo ID: {selectedPrestamoId}</h1>
-        {prestamos
-          .find(prestamo => prestamo.id === selectedPrestamoId)
-          .libros.map((libro, index) => (
-            <label key={index}>
-              <input
-                type="checkbox"
-                value={libro}
-                checked={selectedLibros.includes(libro)}
-                onChange={() => handleCheckboxChange(libro)}
-              />
-              {libro}
-            </label>
-          ))}
-           <label className='letras'>Observaciones:</label>
-        <textarea
-          value={observaciones}
-          onChange={(e) => setObservaciones(e.target.value)}
+         <h1 className='devolverletra'>Devolver préstamo: {selectedPrestamoId}</h1>
+  {selectedPrestamoId && prestamos
+    .find(prestamo => prestamo.id === selectedPrestamoId)?.libros_no_devueltos.map((libro, index) => (
+      <label key={index}>
+        <input
+          type="checkbox"
+          value={libro.id} // Cambiado a libro.id
+          checked={selectedLibros.includes(libro.id)} // Cambiado a libro.id
+          onChange={() => handleCheckboxChange(libro.id)} // Cambiado a libro.id
         />
-        <button onClick={handleDevolverLibros}>Devolver Libros</button>
-        <button onClick={closeModal}>Cancelar</button>
+        {libro.id} - {libro.nombre}
+      </label>
+    ))}
+  <label className='devolverletra'>Observaciones:</label>
+  <textarea
+    value={observaciones}
+    onChange={(e) => setObservaciones(e.target.value)}
+  />
+  <div className="button-container">
+    <button onClick={handleDevolverLibros}>Devolver Libros</button>
+    <button onClick={closeModal}>Cancelar</button>
+  </div>
       </Modal>
-
-
-
-     
     </div>
   );
 };
