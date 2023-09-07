@@ -1,7 +1,7 @@
 
 import "../App.css";
 import Navbar from "../Componentes/Navbar";
-import logo from '../img/logo.png';
+import logo from '../img/logo.PNG';
 function Principal() {
   return (
     <div className="App">

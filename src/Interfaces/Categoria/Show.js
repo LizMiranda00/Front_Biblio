@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Navegador from '../../Componentes/Navegador';
-import home from '../../img/home.png';
-import categ from '../../img/1164620.png';
+
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../../Componentes/Navbar";
@@ -43,7 +41,7 @@ const Show = () => {
   }
   /*para obtener la lista de categorias en el card de la bd*/ 
    const [listcategoria,setlistcategoria]=useState([])
-   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/categorias`) 
+   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/bliblioteca/public/api/categorias`) 
 
    setlistcategoria(response.data)
   }
@@ -61,7 +59,7 @@ const Show = () => {
    const updateCate = async () => {
     try {
       // Realiza una solicitud PUT al servidor para actualizar el nombre de la categoria
-      await axios.put(`http://${ipAddress}/app/bliblioteca/public/api/categoria/${editingCategoria.id}`, {
+      await axios.put(`http://${ipAddress}/bliblioteca/public/api/categoria/${editingCategoria.id}`, {
         nombre: newCateName,
       });
 

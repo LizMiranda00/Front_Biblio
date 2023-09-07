@@ -12,7 +12,7 @@ const Create = () => {
   /*crear autor*/
   const navigate=useNavigate();
   const RegistrarAutor=async()=>{
-    await axios.post(`http://${ipAddress}/app/bliblioteca/public/api/autor`,data) //con esto mando
+    await axios.post(`http://${ipAddress}/bliblioteca/public/api/autor`,data) //con esto mando
     navigate('/Autor')
     //console.log(data);
   }

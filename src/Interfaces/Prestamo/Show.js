@@ -12,7 +12,7 @@ const Show = () => {
 
   useEffect(() => {
     // Realizar una solicitud GET para obtener la lista de préstamos desde tu API
-    axios.get('http://192.168.1.2/app/bliblioteca/public/api/prestamos')
+    axios.get('http://192.168.100.5/bliblioteca/public/api/prestamos')
       .then((response) => {
         // Mapea los datos de préstamos y extrae solo los nombres de los libros
         const prestamosData = response.data.map((prestamo) => ({
@@ -39,6 +39,7 @@ const Show = () => {
             <p>Fecha de Devolución: {prestamo.fecha_devolucion}</p>
             <p>Cantidad: {prestamo.cantidad}</p>
             <p>Libros: {prestamo.libros.join(', ')}</p> {/* Mostrar los nombres de los libros separados por comas */}
+           <button>Devolver</button>
           </div>
         ))}
       </div>
