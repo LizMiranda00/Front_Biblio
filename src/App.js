@@ -5,6 +5,7 @@ import Admi from './Interfaces/Admi';
 import Empleado from './Interfaces/Empleado'
 import Reglib from './Interfaces/Reglib';
 import Regper from './Interfaces/Regper';
+import PersonalShow from './Interfaces/PersonalShow';
 import AutorShow from './Interfaces/Autor/Show';
 import AutorCreate from './Interfaces/Autor/Create';
 import AutorDelete from './Interfaces/Autor/Delete';
@@ -31,6 +32,7 @@ const App = () => {
         
         <Route path='/Regli' element={<Reglib/>}></Route>
         <Route path='/Regpe' element={<Regper/>}></Route>
+        <Route path='/PersonalShow' element={<PersonalShow/>}></Route>
 
         <Route path='/Autor' element={<AutorShow/>}></Route>
         <Route path='/Autor/Create' element={<AutorCreate/>}></Route>

@@ -119,5 +119,27 @@ h1{
       justify-content: space-between;
       margin-top: 10px; /* Ajusta el margen según tu diseño */
     }
+    /*para personal show*/
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
     
+    .card {
+      width: 18%;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
     
+    .card label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .card input {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
