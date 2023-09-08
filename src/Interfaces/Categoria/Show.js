@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Navegador from '../../Componentes/Navegador';
-import home from '../../img/home.png';
-import categ from '../../img/1164620.png';
 import '../Estilos.css'
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../../Componentes/Navbar";
@@ -24,15 +21,15 @@ const Show = () => {
  
   const openModal = (categoria) => {
     setEditingCategoria(categoria); // Al hacer clic en "Editar", guarda el autor que se está editando
-    setNewCateName(categoria.nombre); // Establece el nombre actual como valor inicial en el input
+    setNewCateName(categoria.nombre); // Es estado del nombre
+    setModalIsOpen(false); // Cierratablece el nombre actual como valor inicial en el input
     setNewCateCI(categoria.id); // Establece el carnet actual como valor inicial en el input
     setModalIsOpen(true); // Abre el modal
   };
 
   const closeModal = () => {
     setEditingCategoria(null); // Borra el autor que se está editando al cerrar el modal
-    setNewCateName(''); // Restablece el estado del nombre
-    setModalIsOpen(false); // Cierra el modal
+    setNewCateName(''); // Restablece el el modal
      // Recarga la página después de cerrar el modal
   window.location.reload();
   };
