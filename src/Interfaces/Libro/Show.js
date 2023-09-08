@@ -7,6 +7,7 @@ import Navbar from "../../Componentes/Navbar";
 
 import {ipAddress} from "../../Componentes/confip";
 import axios from 'axios';
+import Select from 'react-select';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
@@ -19,14 +20,25 @@ const Show = () => {
   const [newLibName, setNewLibName] =useState('');
   const [newLibEdicion, setNewLibEdicion] = useState('');
   const [newLibEstado,setNewLibEstado] = useState('');
+  const [newLibLibre,setNewLibLibre] = useState('');
+  const [newLibCategoria,setNewLibCategoria] = useState(''); 
+  const [newLibPersonal,setNewLibPersonal] = useState(''); 
+  const [newLibAutores,setNewLibAutores] = useState('');
 
+  
   const openModal = (libro) =>{
     	setEditingLibro(libro);
       setNewLibId(libro.id);
       setNewLibName(libro.nombre);
       setNewLibEdicion(libro.edicion);
       setNewLibEstado(libro.estado);
+      setNewLibLibre(libro.libre);
+      setNewLibCategoria(libro.categoria_id);
+      setNewLibPersonal(libro.personal_id);
+      const autoresIds = libro.autors.map(autor => autor.id);
+      setNewLibAutores(autoresIds);
       setModalIsOpen(true);
+
   };
 
   const closeModal = ()=>{
@@ -34,7 +46,11 @@ const Show = () => {
     setNewLibName('');
     setNewLibEdicion('');
     setNewLibEstado('');
-    setModalIsOpen(false)
+    setNewLibLibre('');
+    setNewLibCategoria('');
+    setNewLibPersonal('');
+    setNewLibAutores('');
+
     window.location.reload();
   };
 
@@ -54,7 +70,35 @@ const Show = () => {
   /**el get data esta obteniendo categorias y van sumando cada que se crea */
    useEffect(()=>{getData()},[])
 
-   
+
+  /* obtener la lista de categorias en el card de la bd*/ 
+  const [listcategorias,setlistcategoria]=useState([])
+  const getDataCat=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/categorias`) 
+  setlistcategoria(response.data)
+ }
+ /**el get data esta obteniendo categorias y van sumando cada que se crea */
+  useEffect(()=>{getDataCat()},[])
+
+ /*para obtener la lista de autores en el card de la bd*/ 
+const [listautor,setlistautor]=useState([])
+const getDataAut=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/autores`) 
+setlistautor(response.data)
+}
+/**el get data esta obteniendo autores y van sumando cada que se crea */
+useEffect(()=>{getDataAut()},[])
+
+
+
+/**datos para el arreglo de autores */
+const [data,setdata]=useState({nombre:'', edicion:'', estado:'',libre:'1',categoria_id:'1', personal_id:'1',autors:[]})
+
+
+
+const optionAu = listautor.map((autor) => ({
+  value: autor.id,
+  label: autor.nombre,
+}));
+
   
   const searcher = (e) => {
     setSearch(e.target.value.toLowerCase()); // Convierte la entrada del usuario a minúsculas
@@ -67,17 +111,25 @@ const Show = () => {
     
   const updateLib = async () => {
     try {
-      await axios.put(`http://${ipAddress}/app/bliblioteca/public/api/categoria/${editingLibro.id}`,{
+      await axios.put(`http://${ipAddress}/app/bliblioteca/public/api/libro/${editingLibro.id}`,{
         nombre: newLibName,
         estado: newLibEstado,
         edicion: newLibEdicion,
+        libre: newLibLibre,
+        categoria_id: newLibCategoria,
+        personal_id: newLibPersonal,
+        autors: newLibAutores
       })
 
       const updatedLib = listlibro.map((libro)=>
         libro.id === editingLibro.id ? {...libro, 
           nombre: newLibName,
           estado: newLibEstado,
-          edicion: newLibEdicion
+          edicion: newLibEdicion,
+          libre: newLibLibre,
+          categoria_id: newLibCategoria,
+          personal_id: newLibPersonal,
+          autors: newLibAutores
       } : libro
       );
       setlistlibro(updatedLib);
@@ -120,7 +172,7 @@ const Show = () => {
                 onRequestClose={closeModal}
                 contentLabel='Editar libro'
               >
-                <h1>Editar categoria </h1>
+                <h1>Editar libro </h1>
                 <label>Codigo:</label>
                 <input type='number' value={newLibId} readOnly/>
                 <label>Nombre:</label>
@@ -140,6 +192,29 @@ const Show = () => {
                   type='text'
                   value={newLibEdicion}
                   onChange={(e) => setNewLibEdicion(e.target.value)}
+                />
+                <label>Categoría:</label>
+                <input
+                  list='categoria'
+                  value={newLibCategoria}
+                  onChange={(e) =>{
+                    const [categoriaId] = e.target.value.split(',');
+                    setNewLibCategoria(categoriaId)}
+                  } 
+                />
+                  <datalist id='categoria'>
+                    {listcategorias.map((categoria) => (
+                      <option key={categoria.id} value={[categoria.id,categoria.nombre]} />
+                    ))}
+                  </datalist>
+                <label>Autores:</label>
+                <Select isMulti
+                  options={optionAu}
+                  value={optionAu.filter((option) => newLibAutores.includes(option.value))}
+                  onChange={(selectedOptions) => {
+                    const selectedIds = selectedOptions.map((option) => option.value);
+                    setNewLibAutores(selectedIds);
+                  }}
                 />
                 <button className='card-button btn btn-primary' onClick={updateLib}>
                   Actualizar</button>

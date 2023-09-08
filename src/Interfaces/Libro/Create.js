@@ -87,7 +87,7 @@ const handleFormSubmit = (e) => {
      <Navbar/>
      <div class="container d-flex justify-content-center align-items-start">
         
-          <div class="card w-75" >
+          <div class="card " >
             <div class="card-body">
               <h5 className="card-title">Registro del Libro</h5>
 
@@ -101,9 +101,9 @@ const handleFormSubmit = (e) => {
                   const [categoriaId] = e.target.value.split(',');
                   setdata({ ...data, categoria_id: categoriaId });
                 }}/>
-                <datalist id='categoria'> {/* Deja esta parte igual */}
+                <datalist id='categoria'> 
                   {listcategoria.map((categoria) => (
-                    <option key={categoria.id} value={[categoria.id,categoria.name]} /> 
+                    <option key={categoria.id} value={[categoria.id,categoria.nombre]} /> 
                   ))}
                 </datalist>
               </div>

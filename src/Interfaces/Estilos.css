@@ -87,19 +87,27 @@ h1{
    
    /* Estilos para el contenido del modal */
    .react-modal-content {
-     width: 50vw;
-     height: 45vh;
-     margin: auto;
-     margin-top: 28vh;
-     background: rgb(244, 198, 198);
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     border-radius: 8px;
-     border-color: rgb(242, 0, 255);
-   
-   }
+    width: 80vw; /* Cambiado a 80% del ancho de la ventana */
+    height: 60vh; /* Cambiado a 60% de la altura de la ventana */
+    margin: auto;
+    margin-top: 10vh; /* Cambiado a 10% del margen superior de la ventana */
+    background: rgb(172, 255, 177);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border-color: rgb(118, 97, 255);
+  }
+  
+  /* Agregamos una regla de medios para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .react-modal-content {
+      width: 90vw; /* Cambiamos el ancho para pantallas pequeñas */
+      height: 70vh; /* Cambiamos la altura para pantallas pequeñas */
+      margin-top: 5vh; /* Cambiamos el margen superior para pantallas pequeñas */
+    }
+  }
    .prestamos-container {
       display: flex;
       flex-wrap: wrap;
