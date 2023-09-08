@@ -1,7 +1,7 @@
 import home from '../img/home.png';
 import categ from '../img/1164620.png';
 import usu from '../img/1769041.png';
-import logo from '../img/logo.PNG';
+import logo from '../img/logo.png';
 import '../App.css';
 import { Link } from 'react-router-dom';
 
