@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import '../Estilos.css';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Modal from 'react-modal';
 import Navbar from "../../Componentes/Navbar";
 
 const Show = () => {
+  const navigate=useNavigate();
+  const toCreate=()=>{
+    navigate('/Prestamo/Alquiler')
+  }
+  
   const [prestamos, setPrestamos] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedPrestamoId, setSelectedPrestamoId] = useState(null);
@@ -82,8 +88,13 @@ const Show = () => {
   return (
     <div>
       <Navbar/>
-      <h1>Prestamos</h1>
-      
+      <div class='container'>
+      <div class='row'>
+            <h1>Prestamos</h1>
+          <div class='col-3'>
+            <button class="card-button btn btn-primary" onClick={toCreate} >Registrar Prestamo</button> 
+          </div>
+      </div>
       <div className='prestamos-container'>
         {prestamos.map((prestamo, index) => (
           <div key={index} className='card'>
@@ -100,7 +111,7 @@ const Show = () => {
                 </span>
               ))}
             </p>
-            <button onClick={() => openModal(prestamo.id)}>Devolver</button>
+            <button class="card-button btn btn-primary" onClick={() => openModal(prestamo.id)}>Devolver</button>
           </div>
         ))}
       </div>
@@ -133,6 +144,7 @@ const Show = () => {
     <button onClick={closeModal}>Cancelar</button>
   </div>
       </Modal>
+      </div>
     </div>
   );
 };

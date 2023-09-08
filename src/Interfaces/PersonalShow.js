@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {ipAddress} from "../Componentes/confip";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from "../Componentes/Navbar";
 import './Estilos.css';
 const PersonalShow = () => {
+  const navigate=useNavigate();
+  const toCreate=()=>{
+    navigate('/regpe')
+  }
   const [personal, setPersonal] = useState([]);
 
   useEffect(() => {
@@ -20,7 +25,14 @@ const PersonalShow = () => {
     
     <div>
     <Navbar />
-    <h1>Personal</h1>
+    <div class='container'>
+    <div class='row'>
+            <h1>Personal</h1>
+          <div class='col-3'>
+            <button class="card-button btn btn-primary" onClick={toCreate} >Registrar Personal</button> 
+          </div>
+      </div>
+
     <div className='card-container'>
       {personal.map((persona) => (
         <div key={persona.id} className='card'>
@@ -47,6 +59,7 @@ const PersonalShow = () => {
           />
         </div>
       ))}
+    </div>
     </div>
   </div>
 )};

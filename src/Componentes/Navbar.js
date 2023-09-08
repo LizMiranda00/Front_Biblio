@@ -28,14 +28,8 @@ function Navbar() {
         <Link to={"/Cliente"}>
           <img src={usu} alt="usuario" />
         </Link>
-        <Link to={'/Prestamo/Alquiler'}>
-          <img src={prestar} alt="alquilar" />
-        </Link>
         <Link to={'/Prestamo/Show'}>
           <img src={devolucion} alt="devolver" />
-        </Link>
-        <Link to={'/regpe'}>
-          <img src={regper} alt="registrar"/>
         </Link>
         <Link to={'/PersonalShow'}>
           <img src={personal} alt="ver"/>
