@@ -3,7 +3,6 @@ import {ipAddress} from "./Componentes/confip";
 import React, { useState } from "react";
 import logo from './img/logo.png'
 
-
 function Login({setUser}) {
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");

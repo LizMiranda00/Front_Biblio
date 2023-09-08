@@ -82,7 +82,7 @@ const Show = () => {
   return (
     <div>
       <Navbar/>
-      <h1>Registro de Préstamos</h1>
+      <h1>Prestamos</h1>
       
       <div className='prestamos-container'>
         {prestamos.map((prestamo, index) => (
