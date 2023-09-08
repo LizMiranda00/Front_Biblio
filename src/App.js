@@ -13,6 +13,7 @@ import CategoriaCreate from "./Interfaces/Categoria/Create";
 import LibroShow from "./Interfaces/Libro/Show";
 import LibroCreate from "./Interfaces/Libro/Create";
 import Login from "./Login";
+import PersonalShow from "./Interfaces/PersonalShow";
 import ClienteCreate from "./Interfaces/Cliente/Create";
 import ClienteShow from "./Interfaces/Cliente/Show";
 import PrestamoAlquiler from "./Interfaces/Prestamo/Alquiler";
