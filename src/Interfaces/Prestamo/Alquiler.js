@@ -73,7 +73,7 @@ const Alquiler = () => {
   return (
     <div>
       <Navbar />
-      <h1>Registro de préstamos</h1>
+      <h1>Registrar prestamo</h1>
       <label className='letras'>Libro:</label>
       <Select
         isMulti={true}
