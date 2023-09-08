@@ -12,8 +12,8 @@ const Inputimg = (props) => {
       <input
         className='form-control'
         type='file'
-        name={props.name}
-        onChange={onChange}
+        name={onChange}
+        
       />
     </div>
   );

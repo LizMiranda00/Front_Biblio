@@ -47,7 +47,7 @@ const Show = () => {
    const updateClie = async () => {
     try {
       // Realiza una solicitud PUT al servidor para actualizar el nombre de la categoria
-      await axios.put(`http://192.168.1.2/app/bliblioteca/public/api/cliente/${editingCliente.id}`, {
+      await axios.put(`http://${ipAddress}/app/bliblioteca/public/api/cliente/${editingCliente.id}`, {
         nombre: newClieName,
       });
 

@@ -47,7 +47,7 @@ const Show = () => {
   const updateAuthor = async () => {
     try {
       // Realiza una solicitud PUT al servidor para actualizar el nombre del autor
-      await axios.put(`http://192.168.1.2/app/bliblioteca/public/api/autor/${editingAutor.id}`, {
+      await axios.put(`http://${ipAddress}/app/bliblioteca/public/api/autor/${editingAutor.id}`, {
         nombre: newAuthorName,
       });
 

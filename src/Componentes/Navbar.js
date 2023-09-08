@@ -1,15 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-import home from "../img/home.png";
 import categ from "../img/1164620.png";
 import usu from "../img/1769041.png";
 import autors from "../img/autor.png";
 import categoria from "../img/cate.png"
-
+import prestar from "../img/pedir-prestado.png";
+import devolucion from "../img/registro.png";
+import regper from "../img/anadir-amigo.png";
+import personal from "../img/asistencia-social.png";
+import login from "../img/home.png";
 function Navbar() {
   return (
     <nav className="nav">
       <div>
+      <Link to={"/login"}>
+            <img src={login} alt="inicio secion" />
+        </Link>
         <Link to={"/Autor"}>
             <img src={autors} alt="Autor" />
         </Link>
@@ -22,8 +28,20 @@ function Navbar() {
         <Link to={"/Cliente"}>
           <img src={usu} alt="usuario" />
         </Link>
+        <Link to={'/Prestamo/Alquiler'}>
+          <img src={prestar} alt="alquilar" />
+        </Link>
+        <Link to={'/Prestamo/Show'}>
+          <img src={devolucion} alt="devolver" />
+        </Link>
+        <Link to={'/regpe'}>
+          <img src={regper} alt="registrar"/>
+        </Link>
+        <Link to={'/PersonalShow'}>
+          <img src={personal} alt="ver"/>
+        </Link>
       </div>
-      <Link to={"/login"} className="button-login">login</Link>
+      
     </nav>
   );
 }

@@ -1,17 +1,25 @@
-import React from 'react'
+import React from 'react';
 
 const Inputnum = (props) => {
   const onChange = (e) => {
-   props.setData({...props.data, [props.name]: parseInt(e.target.value)})
-    //console.log(props.data) IMPRIME A CADA RATO LEL NUMERO A MEDIDA QUE ANOTO
-}
+    const inputValue = e.target.value;
+    if (inputValue.length <= 8) {
+      props.setData({ ...props.data, [props.name]: parseInt(inputValue, 10) });
+    }
+  };
+
   return (
     <div>
-       <label className='form-label' >{props.tInput}</label>
-       <input className='form-control' name={props.name} type='number' onChange={onChange} 
-       defaultValue={props.value? props.value: null} /> 
+      <label className='form-label'>{props.tInput}</label>
+      <input
+        className='form-control'
+        name={props.name}
+        type='number'
+        onChange={onChange}
+        value={props.data[props.name] || ''}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Inputnum
+export default Inputnum;

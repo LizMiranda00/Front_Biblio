@@ -17,6 +17,7 @@ import ClienteCreate from "./Interfaces/Cliente/Create";
 import ClienteShow from "./Interfaces/Cliente/Show";
 import PrestamoAlquiler from "./Interfaces/Prestamo/Alquiler";
 import PrestamoShow from "./Interfaces/Prestamo/Show";
+
 const App = () => {
   const [user, setUser] = useState("");
   return (
@@ -24,28 +25,27 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Principal />} />
-        <Route path="/" element={<Principal />}></Route>
-
+        
+        <Route path='/Adm' element={<Admi/>}></Route>
+        <Route path='/Emp' element={<Empleado/>}></Route>
+        <Route path='/Regli' element={<Reglib/>}></Route>
+        <Route path='/Regpe' element={<Regper/>}></Route>
+        <Route path='/PersonalShow' element={<PersonalShow/>}></Route>
         <Route path="/Adm" element={<Admi />}></Route>
         <Route path="/Emp" element={<Empleado />}></Route>
-
         <Route path="/Regli" element={<Reglib />}></Route>
         <Route path="/Regpe" element={<Regper />}></Route>
-
         <Route path="/Autor" element={<AutorShow />}></Route>
         <Route path="/Autor/Create" element={<AutorCreate />}></Route>
         <Route path="/Autor/Delete" element={<AutorDelete />}></Route>
-
         <Route path="/Categoria" element={<CategoriaShow />}></Route>
         <Route path="/Categoria/Create" element={<CategoriaCreate />}></Route>
-
         <Route path="/Libro" element={<LibroShow />}></Route>
         <Route path="/Libro/Create" element={<LibroCreate />}></Route>
-        <Route path="/Login" element={<Login />}></Route>
-
+        <Route path='/Prestamo/Alquiler' element={<PrestamoAlquiler/>}></Route>
+        <Route path='/Prestamo/Show' element={<PrestamoShow/>}></Route>       
         <Route path="/Cliente/Create" element={<ClienteCreate />}></Route>
         <Route path="/Cliente" element={<ClienteShow />}></Route>
-
         <Route path="/Prestamo/Alquiler" element={<PrestamoAlquiler />}></Route>
         <Route path="/Prestamo/Show" element={<PrestamoShow />}></Route>
       </Routes>
