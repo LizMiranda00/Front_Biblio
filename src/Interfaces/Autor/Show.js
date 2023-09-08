@@ -38,7 +38,9 @@ const Show = () => {
   }
   /*para obtener la lista de autores en el card de la bd*/ 
   const [listautor,setlistautor]=useState([])
+
   const getData=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/autores`) 
+
   setlistautor(response.data)
  }
  /**el get data esta obteniendo autores y van sumando cada que se crea */
@@ -48,6 +50,7 @@ const Show = () => {
     try {
       // Realiza una solicitud PUT al servidor para actualizar el nombre del autor
       await axios.put(`http://${ipAddress}/app/bliblioteca/public/api/autor/${editingAutor.id}`, {
+
         nombre: newAuthorName,
       });
 
