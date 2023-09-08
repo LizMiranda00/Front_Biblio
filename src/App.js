@@ -5,6 +5,7 @@ import Admi from './Interfaces/Admi';
 import Empleado from './Interfaces/Empleado'
 import Reglib from './Interfaces/Reglib';
 import Regper from './Interfaces/Regper';
+import PersonalShow from './Interfaces/PersonalShow';
 import AutorShow from './Interfaces/Autor/Show';
 import AutorCreate from './Interfaces/Autor/Create';
 import AutorDelete from './Interfaces/Autor/Delete';
@@ -17,6 +18,7 @@ import ClienteCreate from './Interfaces/Cliente/Create';
 import ClienteShow from './Interfaces/Cliente/Show';
 import PrestamoAlquiler from './Interfaces/Prestamo/Alquiler';
 import PrestamoShow from './Interfaces/Prestamo/Show'
+
 const App = () => {
   const [user, setUser] = useState("");
   return (
@@ -38,6 +40,7 @@ const App = () => {
         
         <Route path='/Regli' element={<Reglib/>}></Route>
         <Route path='/Regpe' element={<Regper/>}></Route>
+        <Route path='/PersonalShow' element={<PersonalShow/>}></Route>
 
         <Route path='/Autor' element={<AutorShow/>}></Route>
         <Route path='/Autor/Create' element={<AutorCreate/>}></Route>
@@ -55,6 +58,8 @@ const App = () => {
 
         <Route path='/Prestamo/Alquiler' element={<PrestamoAlquiler/>}></Route>
         <Route path='/Prestamo/Show' element={<PrestamoShow/>}></Route>
+        
+
       </Routes>
       </BrowserRouter>
 

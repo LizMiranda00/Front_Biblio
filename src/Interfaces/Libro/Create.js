@@ -16,7 +16,7 @@ const Create = () => {
   const backtolist=()=>{
     navigate('/Libros')
   }
- 
+  
   /* obtener la lista de categorias en el card de la bd*/ 
   const [listcategoria,setlistcategoria]=useState([])
   const getDataCat=async()=>{let response=await axios.get(`http://${ipAddress}/app/bliblioteca/public/api/categorias`) 
